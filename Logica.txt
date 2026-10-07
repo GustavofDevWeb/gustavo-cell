@@ -1,0 +1,13 @@
+Passos
+[x]Criar um catalogo de itens
+[x]Pesquisar o item
+[x]Estetica do site
+[x]nome da empresa
+[x]Mostrar os itens
+
+Script
+
+[]Itens disponiveis
+[]Calcular o item
+[]Metodo de pagamento
+[]Vai ser entregue ou o cliente vai pegar

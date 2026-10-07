@@ -1,0 +1,166 @@
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',Arial,sans-serif}
+html{scroll-behavior:smooth}
+body{background:#f4f6f9;color:#151515}
+button,input,select{font:inherit}
+
+/* TOPO */
+.topo{min-height:90px;background:linear-gradient(90deg,rgba(0,0,0,.94),rgba(0,8,20,.82),rgba(0,0,0,.94)),url("fundo.jpg");background-size:cover;background-position:center;display:flex;align-items:center;gap:30px;padding:14px 5%;border-bottom:1px solid rgba(39,211,225,.25);position:sticky;top:0;z-index:1000}
+.logo{display:flex;align-items:center;gap:12px;white-space:nowrap}.logo img{width:60px;height:60px;object-fit:contain;display:block}.logo h1{color:#fff;font-size:25px}
+.menu{display:flex;align-items:center;gap:25px;flex:1}.menu a{position:relative;color:#ddd;text-decoration:none;font-size:15px;font-weight:500;padding:10px 5px;transition:.3s}.menu a::after{content:"";position:absolute;left:0;bottom:0;width:0;height:2px;background:#27d3e1;transition:.3s}.menu a:hover,.menu a.ativo{color:#fff}.menu a:hover::after,.menu a.ativo::after{width:100%}
+.pesquisa{display:flex;align-items:center;background:#fff;border-radius:10px;overflow:hidden;width:min(310px,28vw)}#searchInput{width:100%;height:42px;border:0;outline:0;padding:0 13px;font-size:13px}#searchButton{height:42px;width:45px;border:0;background:#0066ff;color:#fff;cursor:pointer}
+#botaoCarrinho{height:42px;border:1px solid rgba(255,255,255,.22);border-radius:10px;padding:0 13px;background:rgba(255,255,255,.10);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);color:#fff;font-weight:700;cursor:pointer;display:flex;align-items:center;gap:7px;white-space:nowrap;transition:.25s;box-shadow:0 4px 14px rgba(0,0,0,.12)}
+#botaoCarrinho:hover{background:#0066ff;border-color:#0066ff;color:#fff;transform:translateY(-2px);box-shadow:0 8px 22px rgba(0,102,255,.32)}
+#botaoCarrinho:active{transform:translateY(0);box-shadow:0 4px 12px rgba(0,102,255,.22)}.iconeCarrinho{font-size:18px}#contadorCarrinho{min-width:22px;padding:2px 6px;border-radius:20px;background:#fff;color:#0066ff;font-size:11px;text-align:center}
+
+/* BANNER */
+.banner{min-height:360px;background:linear-gradient(90deg,rgba(0,0,0,.84),rgba(0,0,0,.35)),url("fundo.jpg") center/cover;display:flex;align-items:center;padding:55px 8%;color:white}.bannerConteudo{max-width:650px}.bannerTag{color:#27d3e1;font-size:11px;font-weight:800;letter-spacing:2px}.banner h2{font-size:46px;line-height:1.1;margin:12px 0}.banner h2 strong{color:#27d3e1}.banner p{color:#ddd;font-size:16px;margin-bottom:25px}.bannerBotao{display:inline-block;text-decoration:none;background:linear-gradient(135deg,#0066ff,#260be0);color:#fff;padding:12px 20px;border-radius:10px;font-weight:700}
+
+/* FILTROS */
+.filtrosLoja{width:100%;margin:0;background:#fff;border:1px solid #e6e6e6;border-radius:18px;padding:23px;box-shadow:0 8px 30px rgba(0,0,0,.05)}
+.filtrosCabecalho{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px}.filtrosCabecalho span{font-size:8px;color:#0066ff;font-weight:800;letter-spacing:1.4px}.filtrosCabecalho h2{font-size:18px;margin-top:2px}
+.filtrosFixos{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.grupoFiltro{display:flex;flex-direction:column;gap:7px}.grupoFiltro label{font-size:12px;font-weight:700;color:#555}.grupoFiltro select{height:43px;border:1px solid #ddd;border-radius:9px;padding:0 12px;background:#fafafa;outline:none;cursor:pointer}.grupoFiltro select:focus{border-color:#0066ff;box-shadow:0 0 0 3px rgba(0,102,255,.1)}
+.filtrosDinamicos{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:14px;margin-top:14px}.filtroDinamico{display:flex;flex-direction:column;gap:7px}.filtroDinamico label{font-size:12px;font-weight:700;color:#555}.filtroDinamico select{height:43px;border:1px solid #ddd;border-radius:9px;padding:0 12px;background:#fafafa;outline:none;cursor:pointer}.btnLimparFiltros{border:1px solid #d8e6ff;background:#eef5ff;color:#0066ff;border-radius:9px;padding:10px 14px;font-size:12px;font-weight:700;cursor:pointer}.btnLimparFiltros:hover{background:#0066ff;color:white}
+
+
+/* FILTRO DISCRETO */
+.botaoAbrirFiltros{position:fixed;right:24px;top:105px;z-index:1200;min-width:42px;height:42px;padding:0 14px;border:1px solid #d8e6ff;border-radius:11px;background:#fff;color:#0066ff;font-size:13px;font-weight:800;cursor:pointer;box-shadow:0 8px 25px rgba(0,0,0,.12);transition:.2s;white-space:nowrap}.botaoAbrirFiltros:hover{transform:translateY(-2px);background:#0066ff;color:#fff;box-shadow:0 10px 25px rgba(0,102,255,.25)}
+.painelFiltrosLoja{position:fixed;inset:0;z-index:5000;visibility:hidden;pointer-events:none}.painelFiltrosLoja.aberto{visibility:visible;pointer-events:auto}.fundoPainelFiltros{position:absolute;inset:0;background:rgba(0,0,0,.42);backdrop-filter:blur(3px);opacity:0;transition:.22s}.painelFiltrosLoja.aberto .fundoPainelFiltros{opacity:1}.conteudoPainelFiltros{position:absolute;right:0;top:0;width:min(520px,calc(100vw - 18px));height:100%;overflow-y:auto;background:#f4f6f9;padding:28px 24px 40px;box-shadow:-18px 0 50px rgba(0,0,0,.18);transform:translateX(105%);transition:.25s ease}.painelFiltrosLoja.aberto .conteudoPainelFiltros{transform:translateX(0)}.cabecalhoPainelFiltros{display:flex;align-items:flex-start;justify-content:space-between;gap:18px;margin-bottom:18px}.cabecalhoPainelFiltros span{color:#0066ff;font-size:9px;font-weight:800;letter-spacing:2px}.cabecalhoPainelFiltros h2{font-size:22px;margin-top:4px}.fecharPainelFiltros{width:40px;height:40px;flex-shrink:0;border:1px solid #e2e2e2;border-radius:50%;background:#fff;color:#333;font-size:27px;line-height:1;cursor:pointer;transition:.2s}.fecharPainelFiltros:hover{background:#dc3545;color:#fff;border-color:#dc3545;transform:rotate(90deg)}body.filtrosPainelAberto{overflow:hidden}
+/* CATÁLOGO */
+.tituloCatalogo{width:min(1180px,90%);margin:30px auto 20px;display:flex;justify-content:space-between;align-items:flex-end}.tituloCatalogo span{color:#0066ff;font-size:10px;font-weight:800;letter-spacing:2px}.tituloCatalogo h2{font-size:29px;margin-top:4px}.tituloCatalogo p{color:#777;font-size:13px}
+main{width:min(1180px,90%);margin:auto}.productCatalog{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px}.productCard{min-width:0;width:100%;background:#fff;border:1px solid #e8e8e8;border-radius:15px;padding:15px;box-shadow:0 6px 22px rgba(0,0,0,.05);transition:.25s;display:flex;flex-direction:column}.productCard:hover{transform:translateY(-4px);box-shadow:0 12px 30px rgba(0,0,0,.09)}.productCard img{width:100%;height:190px;object-fit:contain;border-radius:10px;background:#f7f7f7;margin-bottom:12px}.productCard h3{font-size:15px;line-height:1.35;min-height:40px}.productCard>p:nth-of-type(1){color:#0066ff;font-size:19px;font-weight:800;margin-top:8px}.productCard>p:nth-of-type(2){color:#777;font-size:12px;margin:5px 0 13px}.productButton{min-height:42px;border:0;border-radius:9px;background:linear-gradient(135deg,#0066ff,#260be0);color:#fff;font-size:12px;font-weight:700;cursor:pointer;margin-top:auto}.productButton:disabled{background:#ddd;color:#888;cursor:not-allowed}
+.semProdutos{display:none;text-align:center;padding:70px 20px;color:#777}.semProdutosIcone{font-size:45px;margin-bottom:12px}.semProdutos h3{color:#333;font-size:19px;margin-bottom:6px}.semProdutos p{font-size:13px}
+
+
+/* ITENS SIMPLES EM FORMATO DE LISTA */
+.productCatalog.catalogoItensSimples{display:flex;flex-direction:column;gap:10px}
+.catalogoItensSimples .productCard{display:grid;grid-template-columns:72px minmax(220px,1fr) auto 120px 90px 190px;align-items:center;gap:16px;padding:10px 14px;border-radius:12px}
+.catalogoItensSimples .productCard:hover{transform:translateX(3px)}
+.catalogoItensSimples .productCard img{width:72px;height:72px;margin:0;border-radius:9px}
+.catalogoItensSimples .productCard h3{font-size:14px;min-height:0;margin:0}
+.catalogoItensSimples .tipoProdutoCard{white-space:nowrap}
+.catalogoItensSimples .productCard>p:nth-of-type(1){font-size:17px;margin:0;white-space:nowrap}
+.catalogoItensSimples .productCard>p:nth-of-type(2){font-size:12px;margin:0;white-space:nowrap}
+.catalogoItensSimples .productButton{margin:0;width:100%;min-height:40px}
+@media(max-width:850px){.catalogoItensSimples .productCard{grid-template-columns:64px minmax(0,1fr) auto;gap:10px}.catalogoItensSimples .productCard img{width:64px;height:64px}.catalogoItensSimples .tipoProdutoCard{grid-column:2}.catalogoItensSimples .productCard>p:nth-of-type(1){grid-column:3;grid-row:1}.catalogoItensSimples .productCard>p:nth-of-type(2){grid-column:3;grid-row:2}.catalogoItensSimples .productButton{grid-column:2/4}}
+@media(max-width:520px){.catalogoItensSimples .productCard{grid-template-columns:58px 1fr auto;padding:9px}.catalogoItensSimples .productCard img{width:58px;height:58px}.catalogoItensSimples .productCard h3{font-size:12px}.catalogoItensSimples .tipoProdutoCard{font-size:10px}.catalogoItensSimples .productCard>p:nth-of-type(1){font-size:15px}.catalogoItensSimples .productButton{min-height:38px}}
+
+/* CARRINHO */
+#carrinhoOverlay{position:fixed;inset:0;background:rgba(0,0,0,.5);opacity:0;visibility:hidden;transition:.25s;z-index:1990}#carrinhoOverlay.aberto{opacity:1;visibility:visible}
+#carrinhoContainer{position:fixed;top:0;right:-430px;width:min(430px,100%);height:100vh;background:#fff;z-index:2000;box-shadow:-15px 0 40px rgba(0,0,0,.2);display:flex;flex-direction:column;transition:.3s}#carrinhoContainer.aberto{right:0}
+.carrinhoCabecalho{padding:25px;border-bottom:1px solid #eee;display:flex;justify-content:space-between;align-items:center}.carrinhoCabecalho span{font-size:9px;letter-spacing:2px;color:#0066ff;font-weight:800}.carrinhoCabecalho h2{font-size:23px;margin-top:3px}.fecharCarrinho{width:38px;height:38px;border:0;border-radius:50%;background:#f2f2f2;font-size:25px;cursor:pointer}.fecharCarrinho:hover{background:#dc3545;color:#fff}
+.listaCarrinho{flex:1;overflow-y:auto;padding:15px}.itemCarrinho{display:flex;gap:12px;padding:13px 0;border-bottom:1px solid #eee}.itemCarrinho>img{width:70px;height:70px;object-fit:contain;background:#f7f7f7;border-radius:8px}.itemCarrinhoInfo{flex:1}.itemCarrinhoInfo h3{font-size:13px}.itemCarrinhoInfo>p{color:#0066ff;font-weight:700;font-size:13px;margin-top:4px}.controlesCarrinho{display:flex;align-items:center;gap:7px;margin-top:10px}.btnQuantidade{width:28px;height:28px;border:1px solid #ddd;background:#fff;border-radius:6px;cursor:pointer}.btnExcluirItem{margin-left:auto;border:0;background:#fff0f0;color:#dc3545;border-radius:6px;width:30px;height:30px;cursor:pointer}.carrinhoVazio{text-align:center;padding:60px 15px;color:#777}.carrinhoVazio>div{font-size:40px}.carrinhoVazio h3{color:#333;margin:10px 0 5px}.carrinhoRodape{border-top:1px solid #eee;padding:20px 25px}.linhaTotal{display:flex;justify-content:space-between;align-items:center;margin-bottom:15px}.linhaTotal strong{font-size:22px;color:#0066ff}.btnFinalizar,.btnLimpar{width:100%;height:44px;border-radius:9px;cursor:pointer;font-weight:700}.btnFinalizar{border:0;background:linear-gradient(135deg,#0066ff,#260be0);color:#fff}.btnLimpar{border:1px solid #ddd;background:#fff;color:#555;margin-top:8px}
+
+/* FOOTER */
+footer{margin-top:70px;background:#080b10;color:#aaa;text-align:center;padding:35px 20px}.footerLogo{color:#fff;font-size:22px;margin-bottom:8px}.footerLogo span{color:#27d3e1;margin-left:3px}footer p{font-size:12px}
+
+/* RESPONSIVO */
+@media(max-width:1050px){.productCatalog{grid-template-columns:repeat(3,minmax(0,1fr))}.topo{gap:18px}.pesquisa{width:240px}}
+@media(max-width:900px){.topo{flex-wrap:wrap;padding:14px 5%}.menu{order:3;width:100%;justify-content:center}.pesquisa{margin-left:auto;width:280px}.productCatalog{grid-template-columns:repeat(2,minmax(0,1fr))}.banner h2{font-size:38px}}
+@media(max-width:600px){.pesquisa{order:4;width:100%;margin-left:0}.filtrosFixos{grid-template-columns:1fr}.filtrosCabecalho{align-items:flex-start;gap:12px;flex-direction:column}.productCatalog{grid-template-columns:1fr}.banner{min-height:310px;padding:45px 7%}.banner h2{font-size:32px}.tituloCatalogo{align-items:flex-start;gap:10px;flex-direction:column}.botaoAbrirFiltros{right:14px;top:96px;min-width:40px;width:auto;height:40px;padding:0 12px}.conteudoPainelFiltros{width:min(100vw,520px);padding:23px 17px 35px}}
+@media(max-width:400px){.logo h1{font-size:21px}.logo img{width:50px;height:50px}}
+
+
+/* NOTIFICACAO DE PRODUTO */
+.notificacaoProduto{
+    position:fixed;
+    left:50%;
+    top:28px;
+    z-index:10000;
+    width:min(430px,calc(100vw - 30px));
+    display:flex;
+    align-items:center;
+    gap:14px;
+    padding:15px 16px;
+    border:1px solid #dce8f8;
+    border-radius:16px;
+    background:rgba(255,255,255,.98);
+    box-shadow:0 18px 45px rgba(0,0,0,.18);
+    transform:translate(-50%,-25px) scale(.96);
+    opacity:0;
+    transition:.25s ease;
+}
+.notificacaoProduto.visivel{transform:translate(-50%,0) scale(1);opacity:1}
+.notificacaoProdutoIcone{
+    width:42px;height:42px;flex-shrink:0;border-radius:50%;
+    display:grid;place-items:center;background:#e9f8ef;color:#159447;
+    font-size:22px;font-weight:900;
+}
+.notificacaoProdutoTexto{display:flex;flex-direction:column;gap:3px;min-width:0;flex:1}
+.notificacaoProdutoTexto strong{font-size:14px;color:#20242a}
+.notificacaoProdutoTexto span{font-size:13px;color:#666;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.notificacaoProduto button{width:30px;height:30px;border:0;border-radius:8px;background:transparent;color:#888;font-size:22px;cursor:pointer}
+.notificacaoProduto button:hover{background:#f1f3f5;color:#333}
+
+
+
+/* NECESSITA DE ALGO */
+.acoesLojaTopo{display:contents}
+.botaoNecessitaAlgo{position:fixed;right:24px;bottom:24px;z-index:1200;height:42px;padding:0 16px;border:1px solid rgba(255,255,255,.18);border-radius:10px;background:linear-gradient(135deg,#0066ff,#260be0);color:#fff;font-size:12px;font-weight:800;cursor:pointer;box-shadow:0 8px 24px rgba(0,102,255,.25);transition:.2s}
+.botaoNecessitaAlgo:hover{transform:translateY(-2px);box-shadow:0 12px 28px rgba(0,102,255,.35)}
+.modalNecessitaAlgo{position:fixed;inset:0;display:none;align-items:center;justify-content:center;padding:20px;z-index:7000}
+.modalNecessitaAlgo.aberto{display:flex}
+.fundoNecessitaAlgo{position:absolute;inset:0;background:rgba(0,0,0,.68);backdrop-filter:blur(5px)}
+.conteudoNecessitaAlgo{position:relative;width:100%;max-width:500px;background:#fff;border-radius:20px;padding:32px;box-shadow:0 25px 80px rgba(0,0,0,.3);animation:aparecerNecessita .2s ease}
+@keyframes aparecerNecessita{from{opacity:0;transform:translateY(15px) scale(.98)}to{opacity:1;transform:translateY(0) scale(1)}}
+.fecharNecessitaAlgo{position:absolute;right:18px;top:18px;width:36px;height:36px;border:0;border-radius:50%;background:#f2f3f5;color:#333;font-size:24px;cursor:pointer}
+.fecharNecessitaAlgo:hover{background:#dc3545;color:#fff}
+.etiquetaNecessitaAlgo{color:#0066ff;font-size:10px;font-weight:800;letter-spacing:2px}
+.conteudoNecessitaAlgo h2{margin:6px 0 8px;font-size:25px;color:#151515}
+.conteudoNecessitaAlgo p{color:#777;font-size:13px;line-height:1.6;margin-bottom:22px}
+.conteudoNecessitaAlgo label{display:block;color:#555;font-size:12px;font-weight:700;margin-bottom:7px}
+.conteudoNecessitaAlgo input{width:100%;height:46px;border:1px solid #ddd;border-radius:10px;padding:0 13px;outline:none;font-size:14px;background:#fafafa}
+.conteudoNecessitaAlgo input:focus{border-color:#0066ff;background:#fff;box-shadow:0 0 0 3px rgba(0,102,255,.1)}
+.acoesNecessitaAlgo{display:flex;justify-content:flex-end;gap:10px;margin-top:20px}
+.btnCancelarNecessita{height:44px;padding:0 16px;border:1px solid #ddd;border-radius:9px;background:#fff;color:#555;font-size:13px;font-weight:700;cursor:pointer}
+.btnEnviarNecessita{height:44px;padding:0 18px;border:0;border-radius:9px;background:linear-gradient(135deg,#0066ff,#260be0);color:#fff;font-size:13px;font-weight:800;cursor:pointer}
+@media(max-width:650px){.acoesLojaTopo{right:15px;top:88px}.botaoNecessitaAlgo{padding:0 12px}.conteudoNecessitaAlgo{padding:27px 22px}.acoesNecessitaAlgo{flex-direction:column}.btnCancelarNecessita,.btnEnviarNecessita{width:100%}}
+
+/* Seletor Venda / Conserto do catálogo */
+.controlesCatalogo{display:flex;align-items:center;gap:16px}
+.tipoCatalogo{display:flex;align-items:center;padding:4px;border:1px solid #e2e7ef;border-radius:12px;background:#f7f9fc;box-shadow:0 4px 14px rgba(0,0,0,.04)}
+.tipoCatalogo button{border:0;background:transparent;color:#687386;padding:9px 14px;border-radius:9px;font-size:12px;font-weight:800;cursor:pointer;transition:.25s;white-space:nowrap}
+.tipoCatalogo button:hover{color:#0066ff;background:#fff}
+.tipoCatalogo button.ativo{color:#fff;background:linear-gradient(135deg,#0066ff,#260be0);box-shadow:0 5px 14px rgba(0,102,255,.22);transform:translateY(-1px)}
+.tipoProdutoCard{display:inline-flex;align-self:flex-start;margin-top:7px;padding:4px 8px;border-radius:999px;background:#f1f5ff;color:#0066ff;font-size:10px;font-weight:800;letter-spacing:.2px}
+@media(max-width:700px){.controlesCatalogo{width:100%;justify-content:space-between;align-items:center;gap:10px}.tipoCatalogo{flex:1}.tipoCatalogo button{flex:1;padding:9px 8px}.tituloCatalogo p{margin-left:auto}}
+
+/* Itens simples: foto limpa e expansão para visualizar melhor ao passar o mouse */
+.catalogoItensSimples .productCard{min-height:92px;transition:transform .22s ease,box-shadow .22s ease,min-height .22s ease,padding .22s ease;overflow:hidden}
+.catalogoItensSimples .productCard img{object-fit:contain;background:#f5f7fa;padding:5px;transition:width .22s ease,height .22s ease,transform .22s ease}
+.catalogoItensSimples .productCard:hover{transform:translateX(4px) scale(1.012);min-height:126px;padding-top:16px;padding-bottom:16px;box-shadow:0 12px 30px rgba(25,45,80,.13);z-index:3}
+.catalogoItensSimples .productCard:hover img{width:104px;height:104px;transform:scale(1.03)}
+.catalogoItensSimples .productCard:hover h3{font-size:16px}
+@media(max-width:850px){.catalogoItensSimples .productCard:hover{transform:translateY(-2px);min-height:112px}.catalogoItensSimples .productCard:hover img{width:82px;height:82px}}
+@media(max-width:520px){.catalogoItensSimples .productCard:hover{transform:none;min-height:100px;padding-top:11px;padding-bottom:11px}.catalogoItensSimples .productCard:hover img{width:68px;height:68px}.catalogoItensSimples .productCard:hover h3{font-size:13px}}
+
+/* Correção do hover da lista de Itens simples: mantém a linha estável e amplia a foto sem cortar o nome */
+.catalogoItensSimples .productCard{overflow:visible;transform:none!important;min-height:92px;transition:box-shadow .22s ease,border-color .22s ease,background .22s ease}
+.catalogoItensSimples .productCard:hover{transform:none!important;min-height:92px;padding:10px 14px;box-shadow:0 12px 30px rgba(25,45,80,.13);border-color:#cfe0ff;background:#fff;z-index:3}
+.catalogoItensSimples .productCard img{width:72px;height:72px;transform:none!important;transition:transform .22s ease,box-shadow .22s ease;transform-origin:center}
+.catalogoItensSimples .productCard:hover img{width:72px;height:72px;transform:scale(1.28)!important;box-shadow:0 8px 24px rgba(0,0,0,.14);position:relative;z-index:5}
+.catalogoItensSimples .productCard:hover h3{font-size:14px}
+@media(max-width:850px){.catalogoItensSimples .productCard:hover{min-height:unset;padding:10px 14px}.catalogoItensSimples .productCard:hover img{width:64px;height:64px;transform:scale(1.15)!important}}
+@media(max-width:520px){.catalogoItensSimples .productCard:hover{padding:9px}.catalogoItensSimples .productCard:hover img{width:58px;height:58px;transform:none!important}.catalogoItensSimples .productCard:hover h3{font-size:12px}}
+
+
+/* Itens simples — expansão grande e estável */
+@media (min-width:851px){
+  .catalogoItensSimples{gap:12px;overflow:visible}
+  .catalogoItensSimples .productCard{
+    grid-template-columns:86px minmax(260px,1fr) auto 130px 100px 190px;
+    min-height:104px!important;padding:10px 16px!important;overflow:hidden!important;
+    transform:none!important;transition:min-height .25s ease,padding .25s ease,box-shadow .25s ease,border-color .25s ease!important;
+    position:relative;z-index:1
+  }
+  .catalogoItensSimples .productCard img{width:82px!important;height:82px!important;object-fit:contain;transform:none!important;transition:width .25s ease,height .25s ease!important}
+  .catalogoItensSimples .productCard:hover{
+    grid-template-columns:180px minmax(300px,1fr) auto 140px 110px 200px;
+    min-height:200px!important;padding:18px 20px!important;transform:none!important;overflow:visible!important;
+    box-shadow:0 18px 42px rgba(25,45,80,.16)!important;border-color:#b9d2ff!important;z-index:20
+  }
+  .catalogoItensSimples .productCard:hover img{width:170px!important;height:170px!important;transform:none!important;box-shadow:none!important}
+  .catalogoItensSimples .productCard:hover h3{font-size:20px!important;line-height:1.3}
+  .catalogoItensSimples .productCard:hover>p:nth-of-type(1){font-size:23px!important}
+  .catalogoItensSimples .productCard:hover>p:nth-of-type(2){font-size:14px!important}
+  .catalogoItensSimples .productCard:hover .productButton{min-height:50px;font-size:13px}
+}

@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GustavoCell Shop</title>
+    <link rel="stylesheet" href="Style.css">
+<link rel="stylesheet" href="Backup.css"></head>
+<body>
+<header class="topo">
+    <div class="logo">
+        <img src="logo.png" alt="GustavoCell">
+        <h1>GustavoCell</h1>
+    </div>
+
+    <nav class="menu">
+        <a href="Index.html" class="ativo">Início</a>
+        <a href="Produtos.html">Produtos</a>
+        <a href="Servicos.html">Serviços</a>
+    <a href="Dividas.html">Dívidas</a></nav>
+
+    <div class="pesquisa">
+        <input type="text" id="searchInput" placeholder="Pesquisar produto...">
+        <button id="searchButton" type="button">🔍</button>
+    </div>
+
+    <div class="acoesTopoLoja">
+    <button id="botaoCarrinho" type="button">
+        <span class="iconeCarrinho">🛒</span>
+        <span>Carrinho</span>
+        <span id="contadorCarrinho">0</span>
+    </button>
+<a href="Backup.html" class="atalhoBackup" aria-label="Backup" title="Backup">⚙️</a>
+    </div>
+</header>
+
+<section class="banner">
+    <div class="bannerConteudo">
+        <span class="bannerTag">GUSTAVOCELL SHOP</span>
+        <h2>Tudo para o seu <strong>smartphone</strong></h2>
+        <p>Encontre acessórios, peças e produtos para seu celular.</p>
+        <a href="#catalogo" class="bannerBotao">Ver produtos</a>
+    </div>
+</section>
+
+<div class="acoesLojaTopo">
+    <button id="abrirNecessitaAlgo" class="botaoNecessitaAlgo" type="button" aria-controls="modalNecessitaAlgo" aria-expanded="false">
+        💬 Necessita de algo?
+    </button>
+    <button id="abrirGerenciadorFiltros" class="botaoAbrirFiltros" type="button" aria-controls="painelFiltrosLoja" aria-expanded="false" aria-label="Abrir filtros" title="Filtros">⚙ Filtros</button>
+</div>
+
+<div id="modalNecessitaAlgo" class="modalNecessitaAlgo" aria-hidden="true">
+    <div class="fundoNecessitaAlgo"></div>
+    <div class="conteudoNecessitaAlgo" role="dialog" aria-modal="true" aria-labelledby="tituloNecessitaAlgo">
+        <button id="fecharNecessitaAlgo" class="fecharNecessitaAlgo" type="button" aria-label="Fechar">×</button>
+        <span class="etiquetaNecessitaAlgo">PRECISA DE UM PRODUTO?</span>
+        <h2 id="tituloNecessitaAlgo">Necessita de algo?</h2>
+        <p>Digite o nome do produto que você está procurando e nós vamos registrar sua solicitação.</p>
+        <label for="produtoSolicitado">O que você procura?</label>
+        <input id="produtoSolicitado" type="text" maxlength="120" placeholder="Ex.: Tela do Galaxy A17">
+        <div class="acoesNecessitaAlgo">
+            <button id="cancelarNecessitaAlgo" class="btnCancelarNecessita" type="button">Cancelar</button>
+            <button id="enviarNecessitaAlgo" class="btnEnviarNecessita" type="button">Enviar solicitação</button>
+        </div>
+    </div>
+</div>
+
+<div id="painelFiltrosLoja" class="painelFiltrosLoja" aria-hidden="true">
+    <div class="fundoPainelFiltros"></div>
+    <aside class="conteudoPainelFiltros" role="dialog" aria-modal="true" aria-labelledby="tituloFiltrosLoja">
+        <div class="cabecalhoPainelFiltros">
+            <div>
+                <span>FILTROS</span>
+                <h2 id="tituloFiltrosLoja">Encontre seu produto</h2>
+            </div>
+            <button id="fecharGerenciadorFiltros" class="fecharPainelFiltros" type="button" aria-label="Fechar filtros">×</button>
+        </div>
+
+        <section class="filtrosLoja" id="filtrosLoja">
+            <div class="filtrosCabecalho">
+                <div>
+                    <span>FILTRAR</span>
+                    <h2>Opções de busca</h2>
+                </div>
+                <button id="limparFiltros" class="btnLimparFiltros" type="button">Limpar filtros</button>
+            </div>
+
+            <div class="filtrosFixos">
+                <div class="grupoFiltro">
+                    <label for="filtroPreco">Preço</label>
+                    <select id="filtroPreco">
+                        <option value="todos">Todos</option>
+                        <option value="ate50">Até R$ 50</option>
+                        <option value="50a100">R$ 50 a R$ 100</option>
+                        <option value="acima100">Acima de R$ 100</option>
+                    </select>
+                </div>
+
+                <div class="grupoFiltro">
+                    <label for="ordenacaoProdutos">Ordenar</label>
+                    <select id="ordenacaoProdutos">
+                        <option value="padrao">Padrão</option>
+                        <option value="menorPreco">Menor preço</option>
+                        <option value="maiorPreco">Maior preço</option>
+                        <option value="nomeAZ">Nome A-Z</option>
+                        <option value="nomeZA">Nome Z-A</option>
+                    </select>
+                </div>
+            </div>
+
+            <div id="filtrosDinamicos" class="filtrosDinamicos"></div>
+        </section>
+    </aside>
+</div>
+
+<section class="tituloCatalogo">
+    <div>
+        <span>CATÁLOGO</span>
+        <h2>Nossos produtos</h2>
+    </div>
+    <div class="controlesCatalogo">
+        <div class="tipoCatalogo" role="tablist" aria-label="Tipo de atendimento">
+            <button id="tipoVenda" class="ativo" type="button" role="tab" aria-selected="true">🛍️ Venda</button>
+            <button id="tipoConserto" type="button" role="tab" aria-selected="false">🔧 Conserto</button>
+            <button id="tipoSimples" type="button" role="tab" aria-selected="false">🔩 Itens simples</button>
+        </div>
+        <p id="quantidadeProdutos">0 produtos</p>
+    </div>
+</section>
+
+<main>
+    <div class="productCatalog" id="catalogo"></div>
+
+    <div id="semProdutos" class="semProdutos">
+        <div class="semProdutosIcone">📦</div>
+        <h3>Nenhum produto encontrado</h3>
+        <p>Os produtos cadastrados aparecerão aqui.</p>
+    </div>
+</main>
+
+<div id="carrinhoOverlay"></div>
+
+<aside id="carrinhoContainer" aria-hidden="true">
+    <div class="carrinhoCabecalho">
+        <div>
+            <span>GUSTAVOCELL SHOP</span>
+            <h2>Seu carrinho</h2>
+        </div>
+        <button id="fecharCarrinho" class="fecharCarrinho" type="button">×</button>
+    </div>
+
+    <div id="listaCarrinho" class="listaCarrinho"></div>
+
+    <div class="carrinhoRodape">
+        <div class="linhaTotal">
+            <span>Total</span>
+            <strong id="totalCarrinho">R$ 0,00</strong>
+        </div>
+        <button id="finalizarCompra" class="btnFinalizar" type="button">Finalizar compra</button>
+        <button id="limparCarrinho" class="btnLimpar" type="button">Limpar carrinho</button>
+    </div>
+</aside>
+
+<footer>
+    <div class="footerLogo">
+        <strong>GustavoCell</strong>
+        <span>Shop</span>
+    </div>
+    <p>© 2026 GustavoCell Shop — Todos os direitos reservados.</p>
+</footer>
+
+<script src="Script.js"></script>
+</body>
+</html>

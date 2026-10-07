@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Produtos - GustavoCell</title>
+    <link rel="stylesheet" href="ProductStyles.css">
+<link rel="stylesheet" href="Backup.css"></head>
+<body>
+<header class="topoAdmin">
+    <div class="logoAdmin">
+        <img src="logo.png" alt="GC">
+        <h1>GustavoCell</h1>
+    </div>
+
+    <nav class="menuAdmin">
+        <a href="Index.html">Início</a>
+        <a href="Produtos.html" class="ativo">Produtos</a>
+        <a href="Servicos.html">Serviços</a>
+    <a href="Dividas.html">Dívidas</a><a href="Backup.html" class="atalhoBackup" aria-label="Backup" title="Backup">⚙️</a></nav>
+
+    <a href="Index.html" class="voltarLoja">🛒 Ver loja</a>
+</header>
+
+<main class="admin">
+    <section class="cabecalhoPagina">
+        <div>
+            <span>GERENCIAMENTO</span>
+            <h2>Produtos</h2>
+            <p>Cadastre, edite e gerencie seus produtos.</p>
+        </div>
+        <div class="contadorAdmin">
+            <strong id="totalProdutos">0 produtos</strong>
+        </div>
+    </section>
+
+    <div class="acoesFlutuantesProdutos">
+<button id="editarSelecionados" class="btnAcaoSelecionados btnEditarSelecionados" type="button" style="display:none;">
+            ✏️ Editar selecionados
+        </button>
+
+        <button id="removerSelecionados" class="btnAcaoSelecionados btnRemoverSelecionados" type="button" style="display:none;">
+            🗑 Remover selecionados
+        </button>
+
+        <button id="abrirCadastroMultiplos" class="botaoAbrirMultiplos" type="button" aria-controls="modalCadastroMultiplos" aria-expanded="false">
+            ＋ Adicionar múltiplos
+        </button>
+
+        <button id="abrirGerenciadorFiltros" class="botaoAbrirFiltros" type="button" aria-controls="painelFiltrosLoja" aria-expanded="false">
+            ⚙ Filtros
+        </button>
+    </div>
+
+    <div id="painelFiltrosLoja" class="painelFiltrosLoja" aria-hidden="true">
+        <div class="fundoPainelFiltros"></div>
+        <aside class="conteudoPainelFiltros" role="dialog" aria-modal="true" aria-labelledby="tituloFiltrosLoja">
+            <div class="cabecalhoPainelFiltros">
+                <div class="tituloSecao">
+                    <span>FILTROS DA LOJA</span>
+                    <h2 id="tituloFiltrosLoja">Criar filtros personalizados</h2>
+                </div>
+                <button id="fecharGerenciadorFiltros" class="fecharPainelFiltros" type="button" aria-label="Fechar filtros">×</button>
+            </div>
+
+            <div class="filtroCriacaoGrid">
+                <div class="campo">
+                    <label for="nomeFiltro">Nome do filtro</label>
+                    <input type="text" id="nomeFiltro" placeholder="Ex.: Categoria">
+                </div>
+                <div class="campo">
+                    <label for="opcoesFiltro">Opções</label>
+                    <input type="text" id="opcoesFiltro" placeholder="Ex.: Capinhas, Películas, Carregadores">
+                </div>
+                <button id="adicionarFiltro" class="btnAdicionarFiltro" type="button">+ Criar filtro</button>
+            </div>
+
+            <div id="listaFiltros" class="listaFiltrosAdmin"></div>
+        </aside>
+    </div>
+
+    <section class="solicitacoesClientes" id="solicitacoesClientes">
+        <div class="solicitacoesCabecalho">
+            <div>
+                <span>SOLICITAÇÕES</span>
+                <h2>O que os clientes estão procurando?</h2>
+                <p>Pedidos enviados pelo botão “Necessita de algo?” da loja.</p>
+            </div>
+            <div class="acoesSolicitacoes">
+                <strong id="contadorSolicitacoes">0 solicitações</strong>
+                <button id="gerarPDFSolicitacoes" class="btnGerarPDFSolicitacoes" type="button">📄 Gerar PDF</button>
+                <button id="todosAtendidosSolicitacoes" class="btnTodosAtendidosSolicitacoes" type="button">✓ Todos atendidos</button>
+            </div>
+        </div>
+        <div id="listaSolicitacoes" class="listaSolicitacoes"></div>
+        <div id="semSolicitacoes" class="semSolicitacoes">
+            <div>💬</div>
+            <h3>Nenhuma solicitação ainda</h3>
+            <p>Quando um cliente pedir algo, aparecerá aqui.</p>
+        </div>
+    </section>
+
+    <section class="formularioProduto">
+        <div class="tituloSecao">
+            <div>
+                <span>NOVO PRODUTO</span>
+                <h2>Adicionar produto</h2>
+            </div>
+        </div>
+
+        <div class="formGrid">
+            <div class="campo">
+                <label for="nomeProduto">Nome do produto</label>
+                <input type="text" id="nomeProduto" placeholder="Ex.: Capa Samsung A14">
+            </div>
+
+            <div class="campo">
+                <label for="precoProduto">Preço de venda</label>
+                <input type="number" id="precoProduto" min="0" step="0.01" placeholder="0,00">
+            </div>
+
+            <div class="campo">
+                <label for="precoConsertoProduto">Preço de conserto</label>
+                <input type="number" id="precoConsertoProduto" min="0" step="0.01" placeholder="0,00">
+            </div>
+
+            <div class="campo">
+                <label for="quantidadeProduto">Estoque</label>
+                <input type="number" id="quantidadeProduto" min="0" step="1" placeholder="0">
+            </div>
+
+            <div class="campoImagem">
+                <label for="imagemProduto">Imagem</label>
+                <input type="file" id="imagemProduto" accept="image/*">
+            </div>
+        </div>
+
+        <div id="camposFiltrosProduto" class="camposFiltrosProduto"></div>
+
+        <div class="acoesCadastroProduto">
+            <button id="adicionarProduto" class="btnAdicionar" type="button">+ Adicionar produto</button>
+            <button id="abrirImportadorPDF" class="btnImportarPDF" type="button">📄 Importar itens do PDF</button>
+            <input id="arquivoImportarPDF" type="file" accept="application/pdf,.pdf" hidden>
+        </div>
+    </section>
+
+    <div id="alertaEstoque" class="alertaEstoque" role="status" aria-live="polite"></div>
+
+    <section class="barraProdutos">
+        <div>
+            <strong>Lista de produtos</strong>
+            <span id="quantidadeSelecionados">0 selecionados</span>
+        </div>
+        <div class="acoesListaProdutos">
+            <button id="abrirOpcoesPDFProdutos" class="btnSetaPDFProdutos" type="button" aria-label="Mostrar opções" aria-expanded="false">›</button>
+            <div id="menuPDFProdutos" class="menuPDFProdutos" aria-hidden="true">
+                <button id="gerarPDFProdutos" class="btnGerarPDFProdutos" type="button">📄 Gerar PDF dos itens recebidos</button>
+            </div>
+        </div>
+    </section>
+
+    <section class="filtrosAdmin">
+        <div class="campo">
+            <label for="buscaAdmin">Pesquisar</label>
+            <input type="text" id="buscaAdmin" placeholder="Pesquisar produto...">
+        </div>
+        <div class="campo">
+            <label for="filtroEstoqueAdmin">Estoque</label>
+            <select id="filtroEstoqueAdmin">
+                <option value="todos">Todos</option>
+                <option value="disponiveis">Disponíveis</option>
+                <option value="zerados">Sem estoque</option>
+            </select>
+        </div>
+        <div class="campo">
+            <label for="ordenacaoAdmin">Ordenar</label>
+            <select id="ordenacaoAdmin">
+                <option value="padrao">Padrão</option>
+                <option value="menorPreco">Menor preço</option>
+                <option value="maiorPreco">Maior preço</option>
+                <option value="nomeAZ">Nome A-Z</option>
+                <option value="nomeZA">Nome Z-A</option>
+            </select>
+        </div>
+</section>
+
+    <section class="listaProdutosArea">
+        <div class="listaCabecalho">
+            <div class="colSelecao"><input type="checkbox" id="selecionarTodos"></div>
+            <div class="colProduto">Produto</div>
+            <div class="colPreco">Preço</div>
+            <div class="colEstoque">Estoque</div>
+            <div class="colAcoes">Ações</div>
+        </div>
+
+        <div id="listaProdutos" class="listaProdutos"></div>
+
+        <div id="semProdutos" class="semProdutos">
+            <div class="semProdutosIcone">📦</div>
+            <h3>Nenhum produto cadastrado</h3>
+            <p>Os produtos adicionados aparecerão aqui.</p>
+        </div>
+    </section>
+</main>
+
+<div id="modalImportarPDF" class="modalEditar modalImportarPDF">
+    <div class="modalFundo"></div>
+    <div class="modalConteudo modalConteudoImportarPDF">
+        <div class="modalCabecalho">
+            <div>
+                <span>IMPORTAÇÃO</span>
+                <h2>Itens encontrados no PDF</h2>
+            </div>
+            <button id="fecharImportadorPDF" class="fecharModal" type="button">×</button>
+        </div>
+        <div class="importadorInfo">
+            <p id="statusImportacaoPDF">Selecione os itens que deseja adicionar. A foto é opcional e poderá ser colocada depois.</p>
+        </div>
+        <div id="listaImportacaoPDF" class="listaImportacaoPDF"></div>
+        <div class="modalAcoes">
+            <button id="cancelarImportacaoPDF" class="btnCancelar" type="button">Cancelar</button>
+            <button id="confirmarImportacaoPDF" class="btnSalvar" type="button">Adicionar itens selecionados</button>
+        </div>
+    </div>
+</div>
+
+<div id="modalCadastroMultiplos" class="modalEditar modalCadastroMultiplos">
+    <div class="modalFundo"></div>
+    <div class="modalConteudo modalConteudoMultiplos">
+        <div class="modalCabecalho">
+            <div>
+                <span>CADASTRO EM LOTE</span>
+                <h2>Adicionar múltiplos produtos</h2>
+            </div>
+            <button id="fecharCadastroMultiplos" class="fecharModal" type="button" aria-label="Fechar">×</button>
+        </div>
+
+        <div class="multiplosInfo">
+            <p>Preencha os produtos que deseja cadastrar. A imagem é opcional.</p>
+        </div>
+
+        <div class="multiplosTabelaWrap">
+            <div id="listaCadastroMultiplos" class="listaCadastroMultiplos"></div>
+        </div>
+
+        <div class="multiplosAdicionarLinha">
+            <button id="adicionarLinhaMultipla" class="btnAdicionarLinha" type="button">＋ Adicionar outra linha</button>
+        </div>
+
+        <div class="modalAcoes">
+            <button id="cancelarCadastroMultiplos" class="btnCancelar" type="button">Cancelar</button>
+            <button id="confirmarCadastroMultiplos" class="btnSalvar" type="button">✓ Cadastrar produtos</button>
+        </div>
+    </div>
+</div>
+
+<div id="modalEditarSelecionados" class="modalEditar modalEditarSelecionados">
+    <div class="modalFundo"></div>
+    <div class="modalConteudo modalConteudoLote">
+        <div class="modalCabecalho">
+            <div>
+                <span>EDIÇÃO EM LOTE</span>
+                <h2>Editar produtos selecionados</h2>
+            </div>
+            <button id="fecharModalEditarSelecionados" class="fecharModal" type="button">×</button>
+        </div>
+
+        <div class="infoEdicaoLote">
+            <strong id="quantidadeEdicaoLote">0 produtos selecionados</strong>
+            <p>Os valores atuais aparecem abaixo. Edite diretamente o que precisar e salve tudo de uma vez.</p>
+        </div>
+
+        <div id="listaEdicaoLote" class="listaEdicaoLote"></div>
+
+        <div class="modalAcoes">
+            <button id="cancelarEdicaoSelecionados" class="btnCancelar" type="button">Cancelar</button>
+            <button id="salvarEdicaoSelecionados" class="btnSalvar" type="button">Salvar alterações</button>
+        </div>
+    </div>
+</div>
+
+<div id="modalEditar" class="modalEditar">
+    <div class="modalFundo"></div>
+    <div class="modalConteudo">
+        <div class="modalCabecalho">
+            <div>
+                <span>PRODUTO</span>
+                <h2>Editar produto</h2>
+            </div>
+            <button id="fecharModalEditar" class="fecharModal" type="button">×</button>
+        </div>
+
+        <div class="formEditar">
+            <div class="previewImagem">
+                <img id="previewImagemEditar" src="" alt="Imagem do produto">
+            </div>
+
+            <div class="campo">
+                <label for="editarNome">Nome do produto</label>
+                <input type="text" id="editarNome">
+            </div>
+
+            <div class="campo">
+                <label for="editarPreco">Preço de venda</label>
+                <input type="number" id="editarPreco" min="0" step="0.01">
+            </div>
+
+            <div class="campo">
+                <label for="editarPrecoConserto">Preço de conserto</label>
+                <input type="number" id="editarPrecoConserto" min="0" step="0.01">
+            </div>
+
+            <div class="campo">
+                <label for="editarQuantidade">Estoque</label>
+                <input type="number" id="editarQuantidade" min="0" step="1">
+            </div>
+
+            <div class="campo">
+                <label for="editarImagem">Nova imagem</label>
+                <input type="file" id="editarImagem" accept="image/*">
+            </div>
+
+            <div id="camposFiltrosEdicao" class="camposFiltrosProduto"></div>
+        </div>
+
+        <div class="modalAcoes">
+            <button id="cancelarEdicao" class="btnCancelar" type="button">Cancelar</button>
+            <button id="salvarEdicao" class="btnSalvar" type="button">Salvar alterações</button>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+<script src="Script.js?v=20260924-2"></script>
+</body>
+</html>

@@ -1,0 +1,478 @@
+/* ======================================================
+   RESET
+====================================================== */
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',Arial,sans-serif}
+html{scroll-behavior:smooth}
+body{background:#f4f6f9;color:#151515}
+button,input,select{font:inherit}
+
+/* TOPO */
+.topoAdmin{min-height:80px;background:linear-gradient(90deg,rgba(0,0,0,.94),rgba(0,8,20,.82),rgba(0,0,0,.94)),url("fundo.jpg");background-size:cover;background-position:center;display:flex;align-items:center;gap:45px;padding:14px 6%;border-bottom:1px solid rgba(39,211,225,.25);position:sticky;top:0;z-index:1000}
+.logoAdmin{display:flex;align-items:center;gap:12px;white-space:nowrap}
+.logoAdmin img{width:45px;height:45px;object-fit:contain;display:block;flex-shrink:0}
+.logoAdmin h1{color:white;font-size:25px;font-weight:700}
+.menuAdmin{display:flex;align-items:center;gap:28px;flex:1}
+.menuAdmin a{position:relative;color:#ddd;text-decoration:none;font-size:15px;font-weight:500;padding:10px 5px;transition:.3s}
+.menuAdmin a::after{content:"";position:absolute;left:0;bottom:0;width:0;height:2px;background:#27d3e1;transition:.3s}
+.menuAdmin a:hover,.menuAdmin a.ativo{color:white}
+.menuAdmin a:hover::after,.menuAdmin a.ativo::after{width:100%}
+.voltarLoja{display:inline-flex;align-items:center;justify-content:center;gap:7px;text-decoration:none;color:#fff;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);padding:10px 16px;border-radius:10px;font-size:13px;font-weight:700;transition:.25s;white-space:nowrap}
+.voltarLoja:hover{background:#0066ff;border-color:#0066ff;color:#fff;transform:translateY(-2px);box-shadow:0 8px 22px rgba(0,102,255,.32)}
+
+/* CONTEÚDO */
+.admin{width:100%;max-width:1250px;margin:0 auto;padding:45px 25px 80px}
+.cabecalhoPagina{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:30px}
+.cabecalhoPagina>div:first-child span{color:#0066ff;font-size:11px;font-weight:800;letter-spacing:2px}
+.cabecalhoPagina h2{font-size:34px;margin-top:5px}
+.cabecalhoPagina p{color:#777;font-size:14px;margin-top:5px}
+.contadorAdmin{background:white;border:1px solid #e7e7e7;border-radius:12px;padding:14px 20px;box-shadow:0 5px 20px rgba(0,0,0,.05)}
+.contadorAdmin strong{color:#0066ff;font-size:14px}
+
+/* FILTROS */
+.gerenciadorFiltros,.formularioProduto{background:white;border:1px solid #e9e9e9;border-radius:18px;padding:25px;box-shadow:0 5px 25px rgba(0,0,0,.05);margin-bottom:30px}
+.tituloSecao span{color:#0066ff;font-size:10px;font-weight:800;letter-spacing:2px}
+.tituloSecao h2{font-size:22px;margin-top:4px;margin-bottom:20px}
+.filtroCriacaoGrid{display:grid;grid-template-columns:1fr 2fr auto;gap:15px;align-items:end}
+.campo{display:flex;flex-direction:column;gap:7px}
+.campo label,.campoImagem label{font-size:12px;font-weight:600;color:#555}
+.campo input,.campo select,.campoImagem input{width:100%;height:45px;border:1px solid #ddd;border-radius:9px;outline:none;padding:0 13px;font-size:14px;background:#fafafa;transition:.2s}
+.campo input:focus,.campo select:focus{border-color:#0066ff;background:white;box-shadow:0 0 0 3px rgba(0,102,255,.1)}
+.campoImagem input{padding:5px 7px;cursor:pointer;color:#666;border:1px solid #dfe5ee;background:#f8fafc}
+.campoImagem input:hover{border-color:#b9d2ff;background:#f4f8ff}
+.campoImagem input::file-selector-button{height:33px;margin-right:10px;padding:0 13px;border:1px solid #d8e6ff;border-radius:7px;background:#eef5ff;color:#0066ff;font-size:12px;font-weight:700;cursor:pointer;transition:.2s}
+.campoImagem input:hover::file-selector-button{background:#0066ff;color:#fff;border-color:#0066ff}
+.campoImagem input:focus{border-color:#0066ff;box-shadow:0 0 0 3px rgba(0,102,255,.1);outline:none}
+.btnAdicionarFiltro{height:45px;padding:0 18px;border:none;border-radius:10px;background:linear-gradient(135deg,#0066ff,#260be0);color:white;font-size:13px;font-weight:700;cursor:pointer}
+.listaFiltrosAdmin{display:flex;flex-direction:column;gap:10px;margin-top:20px}
+.filtroAdminItem{border:1px solid #e7e7e7;border-radius:12px;padding:14px 16px;display:flex;align-items:center;justify-content:space-between;gap:15px;background:#fafafa}
+.filtroAdminInfo strong{display:block;font-size:14px}
+.filtroAdminInfo small{display:block;color:#777;margin-top:4px}
+.opcoesFiltroAdmin{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.opcaoBadge{font-size:11px;background:#eaf2ff;color:#0066ff;border-radius:20px;padding:5px 9px}
+.btnExcluirFiltro{border:0;border-radius:8px;background:#fff0f0;color:#dc3545;padding:9px 12px;font-weight:700;cursor:pointer}
+.camposFiltrosProduto{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:15px;margin-top:20px}
+.camposFiltrosProduto:empty{display:none}
+
+/* FORM */
+.formGrid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr 1.5fr;gap:15px;align-items:end}
+.btnAdicionar{margin-top:20px;min-height:45px;padding:0 22px;border:none;border-radius:10px;background:linear-gradient(135deg,#0066ff,#260be0);color:white;font-size:14px;font-weight:700;cursor:pointer;transition:.3s}
+.btnAdicionar:hover,.btnAdicionarFiltro:hover,.btnSalvar:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(0,102,255,.25)}
+
+/* BARRA */
+.barraProdutos{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:12px}
+
+.barraProdutos>div{display:flex;align-items:center;gap:12px}
+.barraProdutos strong{font-size:18px}.barraProdutos span{color:#777;font-size:12px}
+
+/* FILTROS ADMIN */
+.filtrosAdmin{background:white;border:1px solid #e4e4e4;border-radius:14px;padding:18px;margin-bottom:12px;display:grid;grid-template-columns:2fr 1fr 1fr;gap:12px;box-shadow:0 5px 25px rgba(0,0,0,.04)}
+
+/* LISTA */
+.listaProdutosArea{background:white;border:1px solid #e4e4e4;border-radius:14px;overflow:hidden;box-shadow:0 5px 25px rgba(0,0,0,.05)}
+.listaCabecalho,.produtoLista{display:grid;grid-template-columns:55px minmax(300px,1fr) 150px 130px 190px;align-items:center}
+.listaCabecalho{min-height:52px;background:#f6f7f9;border-bottom:1px solid #e5e5e5;color:#777;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.5px}
+.colSelecao{display:flex;align-items:center;justify-content:center}.colProduto{padding-left:15px}.colPreco{text-align:right;padding-right:20px}.colEstoque,.colAcoes{text-align:center}
+.produtoLista{min-height:82px;border-bottom:1px solid #eee;transition:.2s}.produtoLista:last-child{border-bottom:none}.produtoLista:hover{background:#f8fbff}
+.selecaoProduto{display:flex;align-items:center;justify-content:center}.selecaoProduto input{width:17px;height:17px;cursor:pointer;accent-color:#0066ff}
+.produtoInfo{min-width:0;display:flex;align-items:center;gap:14px;padding:8px 15px}
+.produtoListaImagem{width:58px;height:58px;flex-shrink:0;object-fit:contain;border-radius:9px;background:#f7f7f7;border:1px solid #eee}
+.produtoNome{min-width:0}.produtoNome strong{display:block;color:#222;font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.produtoNome small{display:block;color:#999;font-size:11px;margin-top:3px}
+.produtoPreco{text-align:right;padding-right:20px;color:#0066ff;font-size:15px;font-weight:800}
+.produtoEstoque{text-align:center}.estoqueNumero{display:inline-flex;align-items:center;justify-content:center;min-width:45px;padding:6px 9px;border-radius:20px;background:#eaf8ee;color:#218838;font-size:12px;font-weight:700}.estoqueZero{background:#fff0f0!important;color:#dc3545!important}
+.produtoAcoes{display:flex;justify-content:center;align-items:center;gap:7px;padding-right:10px}
+.produtoAcoes{position:relative;z-index:10;display:flex;align-items:center;gap:8px;pointer-events:auto}.produtoAcoes button{position:relative;z-index:11;pointer-events:auto}.btnEditar{height:34px;padding:0 12px;border:1px solid #d8e6ff;border-radius:8px;background:#eef5ff;color:#0066ff;font-size:12px;font-weight:700;cursor:pointer}
+.btnEditar:hover{background:#0066ff;color:white}
+.btnExcluir{width:34px;height:34px;border:none;border-radius:8px;background:#fff0f0;color:#dc3545;cursor:pointer}.btnExcluir:hover{background:#dc3545;color:white}
+
+/* SEM PRODUTOS */
+.semProdutos{display:none;text-align:center;padding:70px 20px;color:#777}.semProdutosIcone{font-size:45px;margin-bottom:12px}.semProdutos h3{color:#333;font-size:19px;margin-bottom:6px}.semProdutos p{font-size:13px}
+
+/* MODAL */
+.modalEditar{position:fixed;inset:0;display:none;align-items:center;justify-content:center;padding:20px;z-index:5000}.modalEditar.aberto{display:flex}
+.modalFundo{position:absolute;inset:0;background:rgba(0,0,0,.65);backdrop-filter:blur(5px)}
+.modalConteudo{position:relative;width:100%;max-width:550px;max-height:90vh;overflow-y:auto;background:white;border-radius:18px;box-shadow:0 25px 80px rgba(0,0,0,.25);animation:aparecerModal .2s ease}
+@keyframes aparecerModal{from{opacity:0;transform:translateY(15px) scale(.98)}to{opacity:1;transform:translateY(0) scale(1)}}
+.modalCabecalho{display:flex;align-items:center;justify-content:space-between;padding:22px 25px;border-bottom:1px solid #eee}
+.modalCabecalho span{color:#0066ff;font-size:10px;font-weight:800;letter-spacing:2px}.modalCabecalho h2{font-size:21px;margin-top:3px}
+.fecharModal{width:38px;height:38px;border:none;border-radius:50%;background:#f2f2f2;color:#333;font-size:25px;cursor:pointer}.fecharModal:hover{background:#dc3545;color:white}
+.formEditar{padding:25px;display:flex;flex-direction:column;gap:16px}
+.previewImagem{width:100%;height:150px;display:flex;align-items:center;justify-content:center;border:1px solid #eee;border-radius:12px;background:#f8f8f8}.previewImagem img{width:130px;height:130px;object-fit:contain}
+.modalAcoes{display:flex;justify-content:flex-end;gap:10px;padding:18px 25px 25px}
+.btnCancelar{height:44px;padding:0 18px;border:1px solid #ddd;border-radius:9px;background:white;color:#555;font-size:13px;font-weight:600;cursor:pointer}.btnCancelar:hover{background:#f5f5f5}
+.btnSalvar{height:44px;padding:0 20px;border:none;border-radius:9px;background:linear-gradient(135deg,#0066ff,#260be0);color:white;font-size:13px;font-weight:700;cursor:pointer;transition:.2s}
+
+/* RESPONSIVO */
+@media(max-width:1000px){.formGrid{grid-template-columns:repeat(2,1fr)}.filtrosAdmin{grid-template-columns:1fr 1fr}.listaCabecalho,.produtoLista{grid-template-columns:45px minmax(250px,1fr) 110px 100px 160px}}
+@media(max-width:750px){.topoAdmin{flex-wrap:wrap;gap:15px;padding:15px 25px}.menuAdmin{order:3;width:100%;justify-content:center}.voltarLoja{margin-left:auto}.cabecalhoPagina{align-items:flex-start;flex-direction:column;gap:15px}.listaProdutosArea{overflow-x:auto}.listaCabecalho,.produtoLista{min-width:850px}.filtroCriacaoGrid{grid-template-columns:1fr}.filtrosAdmin{grid-template-columns:1fr}.filtroAdminItem{align-items:flex-start;flex-direction:column}}
+@media(max-width:550px){.admin{padding:30px 15px 60px}.formGrid{grid-template-columns:1fr}.barraProdutos{align-items:flex-start;flex-direction:column;gap:12px}.btnRemoverSelecionados{width:auto}.modalConteudo{max-height:95vh}.modalAcoes{flex-direction:column}.btnCancelar,.btnSalvar{width:100%}}
+
+/* ALERTA DE ESTOQUE */
+.alertaEstoque{display:none;margin:0 0 18px;border:1px solid #ffd36a;border-radius:14px;background:#fffdf6;color:#4c3b08;overflow:hidden;box-shadow:0 8px 24px rgba(122,84,0,.07)}
+.alertaEstoque.visivel{display:block}
+.alertaEstoqueCabecalho{padding:14px 16px;background:#fff8df;border-bottom:1px solid #ffe29a}
+.alertaEstoqueCabecalho>div{display:flex;align-items:center;gap:11px}.alertaIcone{font-size:22px}.alertaEstoqueCabecalho strong{display:block;color:#6f4700;font-size:14px}.alertaEstoqueCabecalho small{display:block;margin-top:2px;color:#9a7620;font-size:11px;font-weight:600}
+.alertaEstoqueLista{display:flex;flex-direction:column;background:#fff}
+.alertaEstoqueItem{display:grid;grid-template-columns:54px minmax(220px,1fr) 90px 110px;align-items:center;gap:13px;padding:10px 14px;border-bottom:1px solid #eee;transition:.18s ease}.alertaEstoqueItem:last-child{border-bottom:0}.alertaEstoqueItem:hover{background:#fffaf0}
+.alertaEstoqueImagem{width:50px;height:50px;border-radius:10px;background:#f5f6f8;display:flex;align-items:center;justify-content:center;overflow:hidden}.alertaEstoqueImagem img{width:100%;height:100%;object-fit:contain}
+.alertaEstoqueInfo{min-width:0}.alertaEstoqueInfo strong{display:block;color:#222;font-size:13px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.alertaEstoqueInfo small{display:block;margin-top:3px;color:#999;font-size:10px}
+.alertaEstoqueQtd{text-align:center}.alertaEstoqueQtd span{display:block;color:#999;font-size:9px;text-transform:uppercase;letter-spacing:.7px}.alertaEstoqueQtd b{display:block;color:#d33;font-size:16px;margin-top:2px}.alertaEstoqueStatus{justify-self:end;padding:6px 9px;border-radius:999px;background:#fff0f0;color:#d33;font-size:10px;font-weight:800;white-space:nowrap}
+@media(max-width:650px){.alertaEstoqueItem{grid-template-columns:48px minmax(0,1fr) 65px;padding:9px 10px;gap:9px}.alertaEstoqueStatus{display:none}.alertaEstoqueImagem{width:44px;height:44px}.alertaEstoqueInfo strong{font-size:12px}}
+
+/* ACOES FLUTUANTES DA LISTA */
+.acoesFlutuantesProdutos{position:fixed;right:24px;top:98px;z-index:1200;display:flex;align-items:center;justify-content:center;gap:8px;height:42px}
+.acoesFlutuantesProdutos .btnAcaoSelecionados,.acoesFlutuantesProdutos .botaoAbrirFiltros{position:static;flex:0 0 auto;box-sizing:border-box;display:inline-flex;align-items:center;justify-content:center;vertical-align:middle;line-height:1;white-space:nowrap;margin:0}
+.btnAcaoSelecionados{height:42px;padding:0 16px;border-radius:11px;font-size:13px;font-weight:800;cursor:pointer;transition:opacity .2s,transform .2s,box-shadow .2s,background .2s,color .2s;box-shadow:0 8px 25px rgba(0,0,0,.10)}
+.btnAcaoSelecionados.entrando{animation:entradaAcaoSelecionada .28s ease both}
+@keyframes entradaAcaoSelecionada{from{opacity:0;transform:translateY(-8px) scale(.94)}to{opacity:1;transform:translateY(0) scale(1)}}
+.btnRemoverSelecionados{border:1px solid #ffd5d5!important;background:white!important;color:#dc3545!important;height:42px!important;padding:0 16px!important}
+.btnRemoverSelecionados:hover{background:#dc3545!important;color:white!important;transform:translateY(-2px);box-shadow:0 10px 25px rgba(220,53,69,.20)}
+
+/* BOTAO E PAINEL DE FILTROS DA LOJA */
+.botaoAbrirFiltros{position:static;height:42px;padding:0 16px;border:1px solid #d8e6ff;border-radius:11px;background:white;color:#0066ff;font-size:13px;font-weight:800;cursor:pointer;box-shadow:0 8px 25px rgba(0,0,0,.10);transition:.2s}
+.botaoAbrirFiltros:hover{transform:translateY(-2px);background:#0066ff;color:white;box-shadow:0 10px 25px rgba(0,102,255,.25)}
+.painelFiltrosLoja{position:fixed;inset:0;z-index:5000;visibility:hidden;pointer-events:none}
+.painelFiltrosLoja.aberto{visibility:visible;pointer-events:auto}
+.fundoPainelFiltros{position:absolute;inset:0;background:rgba(0,0,0,.42);backdrop-filter:blur(3px);opacity:0;transition:.22s}
+.painelFiltrosLoja.aberto .fundoPainelFiltros{opacity:1}
+.conteudoPainelFiltros{position:absolute;right:0;top:0;width:min(680px,calc(100vw - 20px));height:100%;overflow-y:auto;background:#f4f6f9;padding:32px 28px 45px;box-shadow:-18px 0 50px rgba(0,0,0,.18);transform:translateX(105%);transition:.25s ease}
+.painelFiltrosLoja.aberto .conteudoPainelFiltros{transform:translateX(0)}
+.cabecalhoPainelFiltros{display:flex;align-items:flex-start;justify-content:space-between;gap:20px;margin-bottom:22px}
+.cabecalhoPainelFiltros .tituloSecao h2{margin-bottom:0}
+.fecharPainelFiltros{width:40px;height:40px;flex-shrink:0;border:1px solid #e2e2e2;border-radius:50%;background:white;color:#333;font-size:27px;line-height:1;cursor:pointer;transition:.2s}
+.fecharPainelFiltros:hover{background:#dc3545;color:white;border-color:#dc3545;transform:rotate(90deg)}
+.conteudoPainelFiltros .gerenciadorFiltros{display:block;margin:0;padding:0;border:0;border-radius:0;box-shadow:none;background:transparent}
+.conteudoPainelFiltros .filtroCriacaoGrid{grid-template-columns:1fr;gap:14px}
+.conteudoPainelFiltros .btnAdicionarFiltro{width:100%}
+.conteudoPainelFiltros .listaFiltrosAdmin{margin-top:18px}
+body.filtrosPainelAberto{overflow:hidden}
+@media(max-width:750px){.acoesFlutuantesProdutos{right:15px;top:92px;gap:6px;height:40px}.acoesFlutuantesProdutos .btnAcaoSelecionados,.acoesFlutuantesProdutos .botaoAbrirFiltros{height:40px;padding:0 13px}.conteudoPainelFiltros{padding:25px 18px 35px;width:min(100vw,680px)}}
+
+/* ACOES DE CADASTRO */
+.acoesCadastroProduto{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-top:20px}
+.acoesCadastroProduto .btnAdicionar{margin-top:0}
+.btnImportarPDF{min-height:45px;padding:0 18px;border:1px solid #d8e6ff;border-radius:10px;background:#eef5ff;color:#0066ff;font-size:13px;font-weight:800;cursor:pointer;transition:.2s}
+.btnImportarPDF:hover{background:#0066ff;color:white;transform:translateY(-2px);box-shadow:0 8px 20px rgba(0,102,255,.20)}
+
+/* IMPORTADOR DE PDF */
+.modalImportarPDF{z-index:6000}
+.modalConteudoImportarPDF{max-width:900px}
+.importadorInfo{padding:18px 25px 0;color:#666;font-size:13px}
+.importadorInfo p{margin:0}
+.listaImportacaoPDF{padding:18px 25px;display:flex;flex-direction:column;gap:9px;max-height:55vh;overflow-y:auto}
+.itemImportacaoPDF{display:grid;grid-template-columns:36px minmax(0,1fr) 150px 110px;gap:10px;align-items:center;padding:11px;border:1px solid #e6e6e6;border-radius:10px;background:#fafafa}
+.itemImportacaoPDF input[type="checkbox"]{width:17px;height:17px;accent-color:#0066ff;cursor:pointer}
+.itemImportacaoPDF input[type="text"],.itemImportacaoPDF input[type="number"]{width:100%;height:38px;border:1px solid #ddd;border-radius:8px;padding:0 10px;background:white;outline:none}
+.itemImportacaoPDF input:focus{border-color:#0066ff;box-shadow:0 0 0 3px rgba(0,102,255,.08)}
+.importacaoVazia{padding:35px 15px;text-align:center;color:#777;border:1px dashed #ccc;border-radius:12px;background:#fafafa}
+.importacaoVazia strong{display:block;color:#333;font-size:16px;margin-bottom:6px}
+@media(max-width:700px){.itemImportacaoPDF{grid-template-columns:30px 1fr}.itemImportacaoPDF .campoImportacaoPreco,.itemImportacaoPDF .campoImportacaoQtd{grid-column:2}.acoesCadastroProduto{flex-direction:column;align-items:stretch}.acoesCadastroProduto button{width:100%}}
+
+
+
+
+/* NOTIFICACAO DE PRODUTO */
+.notificacaoProduto{
+    position:fixed;
+    left:50%;
+    top:28px;
+    z-index:10000;
+    width:min(430px,calc(100vw - 30px));
+    display:flex;
+    align-items:center;
+    gap:14px;
+    padding:15px 16px;
+    border:1px solid #dce8f8;
+    border-radius:16px;
+    background:rgba(255,255,255,.98);
+    box-shadow:0 18px 45px rgba(0,0,0,.18);
+    transform:translate(-50%,-25px) scale(.96);
+    opacity:0;
+    transition:.25s ease;
+}
+.notificacaoProduto.visivel{transform:translate(-50%,0) scale(1);opacity:1}
+.notificacaoProdutoIcone{
+    width:42px;height:42px;flex-shrink:0;border-radius:50%;
+    display:grid;place-items:center;background:#e9f8ef;color:#159447;
+    font-size:22px;font-weight:900;
+}
+.notificacaoProdutoTexto{display:flex;flex-direction:column;gap:3px;min-width:0;flex:1}
+.notificacaoProdutoTexto strong{font-size:14px;color:#20242a}
+.notificacaoProdutoTexto span{font-size:13px;color:#666;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.notificacaoProduto button{width:30px;height:30px;border:0;border-radius:8px;background:transparent;color:#888;font-size:22px;cursor:pointer}
+.notificacaoProduto button:hover{background:#f1f3f5;color:#333}
+
+
+/* CADASTRO DE MÚLTIPLOS PRODUTOS */
+.botaoAbrirMultiplos{
+    position:static;
+    height:42px;
+    padding:0 16px;
+    border:1px solid #d8e6ff;
+    border-radius:11px;
+    background:linear-gradient(135deg,#0066ff,#260be0);
+    color:white;
+    font-size:13px;
+    font-weight:800;
+    cursor:pointer;
+    box-shadow:0 8px 25px rgba(0,0,0,.10);
+    transition:.2s;
+    white-space:nowrap;
+}
+.botaoAbrirMultiplos:hover{
+    transform:translateY(-2px);
+    box-shadow:0 10px 25px rgba(0,102,255,.25);
+}
+.modalCadastroMultiplos{z-index:6500}
+.modalConteudoMultiplos{
+    max-width:1150px;
+    max-height:92vh;
+}
+.multiplosInfo{
+    padding:18px 25px 5px;
+    color:#666;
+    font-size:13px;
+}
+.multiplosInfo p{margin:0}
+.multiplosTabelaWrap{
+    padding:15px 25px 5px;
+    max-height:62vh;
+    overflow-y:auto;
+}
+.listaCadastroMultiplos{
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+}
+.linhaCadastroMultiplo{
+    border:1px solid #e4e8ee;
+    border-radius:13px;
+    background:#fafbfc;
+    padding:13px;
+}
+.cabecalhoLinhaMultipla{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:12px;
+    margin-bottom:11px;
+}
+.numeroLinhaMultipla{
+    color:#0066ff;
+    font-size:13px;
+}
+.removerLinhaMultipla{
+    width:30px;
+    height:30px;
+    border:0;
+    border-radius:8px;
+    background:#fff0f0;
+    color:#dc3545;
+    font-size:20px;
+    line-height:1;
+    cursor:pointer;
+}
+.removerLinhaMultipla:hover{background:#dc3545;color:white}
+.camposLinhaMultipla{
+    display:grid;
+    grid-template-columns:minmax(240px,2fr) minmax(120px,1fr) minmax(110px,.8fr) minmax(190px,1.2fr);
+    gap:10px;
+    align-items:end;
+}
+.campoMultiplo,.campoMultiploFiltro{
+    display:flex;
+    flex-direction:column;
+    gap:6px;
+}
+.campoMultiplo label,.campoMultiploFiltro label{
+    font-size:11px;
+    font-weight:700;
+    color:#555;
+}
+.campoMultiplo input,.campoMultiploFiltro select{
+    width:100%;
+    height:40px;
+    border:1px solid #ddd;
+    border-radius:8px;
+    outline:none;
+    padding:0 10px;
+    font-size:13px;
+    background:white;
+}
+.campoMultiplo input:focus,.campoMultiploFiltro select:focus{
+    border-color:#0066ff;
+    box-shadow:0 0 0 3px rgba(0,102,255,.08);
+}
+.imagemMultiplo input{
+    padding:4px 6px;
+    cursor:pointer;
+}
+.imagemMultiplo input::file-selector-button{
+    height:30px;
+    margin-right:8px;
+    padding:0 9px;
+    border:1px solid #d8e6ff;
+    border-radius:6px;
+    background:#eef5ff;
+    color:#0066ff;
+    font-size:11px;
+    font-weight:700;
+    cursor:pointer;
+}
+.filtrosLinhaMultipla{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
+    gap:10px;
+    margin-top:12px;
+    padding-top:12px;
+    border-top:1px solid #e6e9ee;
+}
+.tituloFiltrosMultiplo{
+    grid-column:1/-1;
+    color:#777;
+    font-size:10px;
+    font-weight:800;
+    letter-spacing:1px;
+    text-transform:uppercase;
+}
+.multiplosAdicionarLinha{
+    padding:12px 25px 5px;
+}
+.btnAdicionarLinha{
+    height:40px;
+    padding:0 14px;
+    border:1px dashed #b9d2ff;
+    border-radius:9px;
+    background:#f5f8ff;
+    color:#0066ff;
+    font-size:12px;
+    font-weight:800;
+    cursor:pointer;
+    transition:.2s;
+}
+.btnAdicionarLinha:hover{background:#0066ff;color:white;border-color:#0066ff}
+@media(max-width:1000px){
+    .camposLinhaMultipla{grid-template-columns:1fr 1fr}
+}
+@media(max-width:750px){
+    .acoesFlutuantesProdutos{
+        flex-wrap:wrap;
+        justify-content:flex-end;
+        height:auto;
+        max-width:calc(100vw - 30px);
+    }
+    .camposLinhaMultipla{grid-template-columns:1fr}
+    .multiplosTabelaWrap{padding-left:15px;padding-right:15px}
+    .multiplosInfo,.multiplosAdicionarLinha{padding-left:15px;padding-right:15px}
+    .modalConteudoMultiplos{max-height:95vh}
+}
+
+
+/* SOLICITAÇÕES DOS CLIENTES */
+.solicitacoesClientes{background:white;border:1px solid #e9e9e9;border-radius:18px;padding:25px;box-shadow:0 5px 25px rgba(0,0,0,.05);margin-bottom:30px}
+.solicitacoesCabecalho{display:flex;align-items:flex-end;justify-content:space-between;gap:20px;margin-bottom:18px}
+.solicitacoesCabecalho>div span{color:#0066ff;font-size:10px;font-weight:800;letter-spacing:2px}
+.solicitacoesCabecalho h2{font-size:22px;margin-top:4px}
+.solicitacoesCabecalho p{color:#777;font-size:13px;margin-top:5px}
+.acoesSolicitacoes{display:flex;align-items:center;gap:10px;flex-wrap:wrap;justify-content:flex-end}.solicitacoesCabecalho>strong{background:#eaf2ff;color:#0066ff;border-radius:20px;padding:8px 12px;font-size:12px;white-space:nowrap}.btnGerarPDFSolicitacoes{height:38px;padding:0 14px;border:1px solid #d8dee8;border-radius:9px;background:#111;color:#fff;font-size:12px;font-weight:800;cursor:pointer;transition:.2s}.btnGerarPDFSolicitacoes:hover{background:#0066ff;transform:translateY(-1px)}
+.listaSolicitacoes{display:flex;flex-direction:column;gap:10px}
+.solicitacaoCliente{display:flex;align-items:center;gap:13px;padding:14px 15px;border:1px solid #e5e8ee;border-radius:12px;background:#fafbfd}
+.solicitacaoIcone{width:42px;height:42px;display:flex;align-items:center;justify-content:center;border-radius:10px;background:#eaf2ff;font-size:20px;flex-shrink:0}
+.solicitacaoInfo{flex:1;min-width:0}
+.solicitacaoInfo strong{display:block;color:#222;font-size:14px;word-break:break-word}
+.solicitacaoInfo small{display:block;color:#999;font-size:11px;margin-top:4px}
+.btnAtenderSolicitacao{height:36px;padding:0 12px;border:1px solid #ccebd5;border-radius:8px;background:#effaf2;color:#218838;font-size:11px;font-weight:800;cursor:pointer;white-space:nowrap}
+.btnAtenderSolicitacao:hover{background:#218838;color:#fff}
+.semSolicitacoes{text-align:center;padding:35px 20px;color:#777}
+.semSolicitacoes>div{font-size:35px;margin-bottom:8px}.semSolicitacoes h3{color:#333;font-size:16px;margin-bottom:5px}.semSolicitacoes p{font-size:12px}
+@media(max-width:600px){.solicitacoesClientes{padding:18px}.solicitacoesCabecalho{align-items:flex-start;flex-direction:column}.solicitacaoCliente{align-items:flex-start;flex-wrap:wrap}.solicitacaoInfo{width:calc(100% - 55px)}.btnAtenderSolicitacao{margin-left:55px}}
+
+
+.btnTodosAtendidosSolicitacoes{background:rgba(180,35,24,.58);color:#fff;border:1px solid rgba(255,255,255,.18);border-radius:10px;padding:10px 14px;font-weight:700;cursor:pointer;transition:background .28s ease,transform .28s ease,box-shadow .28s ease,opacity .28s ease;backdrop-filter:blur(5px);opacity:.82;}
+.btnTodosAtendidosSolicitacoes:hover{background:#21a44a;color:#fff;transform:translateY(-2px) scale(1.025);box-shadow:0 7px 18px rgba(33,164,74,.28);opacity:1;}
+.btnTodosAtendidosSolicitacoes:active{transform:translateY(0) scale(.98);box-shadow:0 3px 8px rgba(33,164,74,.2);}
+
+/* OPÇÕES OCULTAS DA LISTA DE PRODUTOS */
+.acoesListaProdutos{position:relative;display:flex;align-items:center;justify-content:flex-end}
+.btnSetaPDFProdutos{width:30px;height:30px;padding:0;border:0;background:transparent;color:#7b8491;font-size:24px;font-weight:800;line-height:1;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:transform .32s cubic-bezier(.2,.8,.2,1),color .22s ease,filter .22s ease}
+.btnSetaPDFProdutos:hover{background:transparent;color:#0066ff;transform:translateY(-2px);filter:drop-shadow(0 4px 7px rgba(0,102,255,.22))}
+.btnSetaPDFProdutos.aberto{background:transparent;color:#0066ff;transform:rotate(180deg) translateY(-1px);filter:drop-shadow(0 4px 7px rgba(0,102,255,.22))}
+.menuPDFProdutos{position:absolute;right:0;top:calc(100% + 8px);z-index:30;opacity:0;visibility:hidden;transform:translateY(-7px) scale(.97);transform-origin:top right;transition:opacity .22s ease,transform .22s ease,visibility .22s ease}
+.menuPDFProdutos.aberto{opacity:1;visibility:visible;transform:translateY(0) scale(1)}
+.btnGerarPDFProdutos{height:38px;padding:0 14px;border:1px solid #d8dee8;border-radius:9px;background:#111;color:#fff;font-size:12px;font-weight:800;cursor:pointer;white-space:nowrap;box-shadow:0 8px 22px rgba(0,0,0,.12);transition:background .22s ease,transform .22s ease,box-shadow .22s ease}
+.btnGerarPDFProdutos:hover{background:#0066ff;transform:translateY(-1px);box-shadow:0 10px 24px rgba(0,102,255,.22)}
+@media(max-width:600px){.menuPDFProdutos{right:0}.btnGerarPDFProdutos{max-width:260px;white-space:normal;height:auto;min-height:38px;padding:8px 12px;text-align:left}}
+
+/* Dois preços por produto */
+.produtoPreco{display:flex;flex-direction:column;align-items:flex-end;gap:4px;line-height:1.25}
+.produtoPreco span:first-child{color:#0066ff}
+.produtoPreco span:last-child{color:#7b52d9;font-size:12px}
+.camposLinhaMultipla .precoConsertoMultiplo input{border-color:#e2d9ff}
+
+/* EDIÇÃO EM LOTE */
+.btnEditarSelecionados{background:#0066ff;color:#fff;border:1px solid #0066ff}
+.btnEditarSelecionados:hover{background:#0052cc;transform:translateY(-2px);box-shadow:0 10px 24px rgba(0,102,255,.22)}
+.modalEditarSelecionados .modalConteudo{max-width:560px}
+.infoEdicaoLote{margin:0 25px 4px;padding:14px 15px;border:1px solid #e3ebf8;border-radius:12px;background:#f7faff}
+.infoEdicaoLote strong{display:block;color:#0066ff;font-size:14px}
+.infoEdicaoLote p{margin-top:5px;color:#777;font-size:12px;line-height:1.5}
+.formEditarLote{display:grid;grid-template-columns:1fr 1fr;gap:10px 14px;padding:18px 25px 8px}
+.campoLoteCheck{grid-column:1/-1;display:flex;align-items:center;gap:9px;padding:10px 12px;border:1px solid #e7eaf0;border-radius:10px;background:#fff;cursor:pointer;font-size:12px;font-weight:800;color:#333;transition:.2s}
+.campoLoteCheck:hover{border-color:#b9d2ff;background:#f7faff}
+.campoLoteCheck input{width:17px;height:17px;accent-color:#0066ff;cursor:pointer}
+.formEditarLote .campo{display:flex;flex-direction:column;gap:6px}
+.formEditarLote .campo label{font-size:11px;font-weight:800;color:#666}
+.formEditarLote .campo input:disabled{background:#f1f3f6;color:#aaa;cursor:not-allowed}
+@media(max-width:600px){
+ .formEditarLote{grid-template-columns:1fr;padding:15px}
+ .infoEdicaoLote{margin:0 15px}
+ .modalEditarSelecionados .modalConteudo{width:calc(100vw - 24px);max-height:92vh}
+}
+
+/* CAMPOS DE ARQUIVO E EDIÇÃO EM LOTE */
+#editarImagem{
+    width:100%;height:45px;padding:5px 7px;cursor:pointer;color:#666;
+    border:1px solid #dfe5ee;border-radius:9px;background:#f8fafc;
+    transition:.2s;outline:none;
+}
+#editarImagem:hover{border-color:#b9d2ff;background:#f4f8ff}
+#editarImagem:focus{border-color:#0066ff;box-shadow:0 0 0 3px rgba(0,102,255,.1)}
+#editarImagem::file-selector-button{
+    height:33px;margin-right:10px;padding:0 13px;border:1px solid #d8e6ff;
+    border-radius:7px;background:#eef5ff;color:#0066ff;font-size:12px;font-weight:700;
+    cursor:pointer;transition:.2s;
+}
+#editarImagem:hover::file-selector-button{background:#0066ff;color:#fff;border-color:#0066ff}
+
+.modalConteudoLote{max-width:760px!important}
+.listaEdicaoLote{padding:16px 25px 4px;display:flex;flex-direction:column;gap:12px}
+.itemEdicaoLote{border:1px solid #e5eaf2;border-radius:14px;background:#fff;padding:13px;transition:.2s;box-shadow:0 3px 12px rgba(0,0,0,.035)}
+.itemEdicaoLote:hover{border-color:#c8d9f8;box-shadow:0 7px 22px rgba(0,102,255,.08);transform:translateY(-1px)}
+.cabecalhoItemEdicaoLote{display:flex;align-items:center;gap:10px;margin-bottom:12px}
+.numeroItemEdicaoLote{width:27px;height:27px;display:flex;align-items:center;justify-content:center;border-radius:8px;background:#eef5ff;color:#0066ff;font-size:11px;font-weight:800;flex-shrink:0}
+.imagemItemEdicaoLote{width:46px;height:46px;border:1px solid #eee;border-radius:9px;background:#f8f8f8;display:flex;align-items:center;justify-content:center;flex-shrink:0;overflow:hidden}
+.imagemItemEdicaoLote img{width:100%;height:100%;object-fit:contain}
+.nomeItemEdicaoLote{min-width:0}.nomeItemEdicaoLote strong{display:block;font-size:13px;color:#222;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.nomeItemEdicaoLote small{display:block;margin-top:2px;color:#999;font-size:10px}
+.camposItemEdicaoLote{display:grid;grid-template-columns:1fr 1fr .8fr;gap:10px}
+.camposItemEdicaoLote .campo{display:flex;flex-direction:column;gap:5px}
+.camposItemEdicaoLote .campo label{font-size:10px;font-weight:800;color:#666}
+.camposItemEdicaoLote .campo input{width:100%;height:40px;border:1px solid #dfe5ee;border-radius:8px;padding:0 10px;background:#fafafa;outline:none;transition:.2s;font-size:13px;font-weight:600}
+.camposItemEdicaoLote .campo input:hover{border-color:#b9d2ff;background:#fff}
+.camposItemEdicaoLote .campo input:focus{border-color:#0066ff;background:#fff;box-shadow:0 0 0 3px rgba(0,102,255,.1)}
+@media(max-width:600px){
+ .listaEdicaoLote{padding:12px 15px 4px}
+ .camposItemEdicaoLote{grid-template-columns:1fr 1fr}
+ .camposItemEdicaoLote .campo:last-child{grid-column:1/-1}
+}
+
+/* Alerta de estoque recolhivel */
+.alertaEstoqueCabecalho{display:flex;align-items:center;justify-content:space-between;gap:12px;cursor:pointer;border-bottom:0;user-select:none}
+.alertaEstoqueCabecalho.aberto{border-bottom:1px solid #ffe29a}
+.alertaEstoqueToggle{margin-left:auto;font-size:18px;color:#8a6413;transition:transform .22s ease}
+.alertaEstoqueCabecalho.aberto .alertaEstoqueToggle{transform:rotate(180deg)}
+.alertaEstoqueConteudo{display:grid;grid-template-rows:0fr;transition:grid-template-rows .25s ease;background:#fff}
+.alertaEstoqueConteudo.aberto{grid-template-rows:1fr}
+.alertaEstoqueConteudoInterno{overflow:hidden;min-height:0}
+.alertaEstoqueAcoes{display:flex;justify-content:flex-end;padding:12px 14px;border-top:1px solid #eee;background:#fffdf8}
+.btnPdfEstoque{border:0;border-radius:10px;padding:10px 15px;background:#1f6feb;color:#fff;font-weight:800;cursor:pointer;box-shadow:0 5px 14px rgba(31,111,235,.18);transition:.18s ease}
+.btnPdfEstoque:hover{transform:translateY(-1px);filter:brightness(.96)}
+@media(max-width:650px){.alertaEstoqueAcoes{padding:10px}.btnPdfEstoque{width:100%}}
