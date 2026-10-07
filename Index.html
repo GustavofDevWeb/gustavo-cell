@@ -13,7 +13,7 @@
         <h1>GustavoCell</h1>
     </div>
 
-    <nav class="menu">
+    <button class="menuMobileToggle" type="button" aria-label="Abrir menu" aria-expanded="false">☰</button><nav class="menu">
         <a href="Index.html" class="ativo">Início</a>
         <a href="Produtos.html">Produtos</a>
         <a href="Servicos.html">Serviços</a>
@@ -45,7 +45,7 @@
 
 <div class="acoesLojaTopo">
     <button id="abrirNecessitaAlgo" class="botaoNecessitaAlgo" type="button" aria-controls="modalNecessitaAlgo" aria-expanded="false">
-        💬 Necessita de algo?
+        <span class="textoNecessitaDesktop">💬 Necessita de algo?</span><span class="textoNecessitaMobile">💬 Solicitar item</span>
     </button>
     <button id="abrirGerenciadorFiltros" class="botaoAbrirFiltros" type="button" aria-controls="painelFiltrosLoja" aria-expanded="false" aria-label="Abrir filtros" title="Filtros">⚙ Filtros</button>
 </div>
@@ -171,5 +171,5 @@
 </footer>
 
 <script src="Script.js"></script>
-</body>
+<script src="MobileNav.js"></script></body>
 </html>

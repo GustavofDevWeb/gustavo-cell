@@ -476,3 +476,33 @@ body.filtrosPainelAberto{overflow:hidden}
 .btnPdfEstoque{border:0;border-radius:10px;padding:10px 15px;background:#1f6feb;color:#fff;font-weight:800;cursor:pointer;box-shadow:0 5px 14px rgba(31,111,235,.18);transition:.18s ease}
 .btnPdfEstoque:hover{transform:translateY(-1px);filter:brightness(.96)}
 @media(max-width:650px){.alertaEstoqueAcoes{padding:10px}.btnPdfEstoque{width:100%}}
+
+/* ===== MENU HAMBURGUER + ACOES MOBILE ===== */
+.menuMobileToggle{display:none}
+@media(max-width:700px){
+  .topoAdmin{display:grid;grid-template-columns:minmax(0,1fr) auto auto;align-items:center;gap:8px;padding:10px 12px;min-height:auto;overflow:visible}
+  .logoAdmin{grid-column:1;grid-row:1;min-width:0}.logoAdmin img{width:44px;height:44px}.logoAdmin h1{font-size:19px;overflow:hidden;text-overflow:ellipsis}
+  .voltarLoja{grid-column:2;grid-row:1;margin:0;padding:0 11px;height:44px;font-size:12px}
+  .menuMobileToggle{grid-column:3;grid-row:1;display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;border:1px solid rgba(255,255,255,.2);border-radius:11px;background:rgba(255,255,255,.1);color:#fff;font-size:24px;font-weight:800;cursor:pointer}
+  .menuMobileToggle.aberto{background:#0066ff;border-color:#0066ff}
+  .menuAdmin{grid-column:1/-1;grid-row:2;display:none!important;width:100%;padding:8px;gap:5px;background:rgba(4,10,20,.97);border:1px solid rgba(255,255,255,.1);border-radius:12px;box-shadow:0 14px 30px rgba(0,0,0,.28)}
+  .menuAdmin.menuMobileAberto{display:flex!important;flex-direction:column;align-items:stretch}
+  .menuAdmin a{width:100%;padding:11px 12px!important;border-radius:8px;background:transparent;font-size:14px}
+  .menuAdmin a:hover,.menuAdmin a.ativo{background:rgba(0,102,255,.2)}
+  .menuAdmin a::after{display:none}
+  .acoesFlutuantesProdutos{position:static!important;inset:auto!important;display:grid;grid-template-columns:1fr 1fr;width:calc(100% - 30px);max-width:1180px;height:auto;margin:14px auto 0;gap:8px;transform:none!important}
+  .acoesFlutuantesProdutos .botaoAbrirMultiplos,.acoesFlutuantesProdutos .botaoAbrirFiltros,.acoesFlutuantesProdutos .btnAcaoSelecionados{width:100%;height:42px!important;padding:0 10px!important;white-space:normal;text-align:center;font-size:11px}
+  .admin{padding-top:24px}
+}
+@media(max-width:430px){
+  .topoAdmin{grid-template-columns:minmax(0,1fr) auto auto;padding:9px}
+  .logoAdmin img{width:40px;height:40px}.logoAdmin h1{font-size:17px}
+  .voltarLoja{height:40px;padding:0 9px;font-size:0}.voltarLoja::first-letter{font-size:18px}
+  .menuMobileToggle{width:40px;height:40px}
+  .acoesFlutuantesProdutos{width:calc(100% - 18px);grid-template-columns:1fr 1fr}
+}
+
+/* Microinteracoes */
+@keyframes gcFadeUp { from{opacity:0;transform:translateY(14px)} to{opacity:1;transform:translateY(0)} }
+@keyframes gcMenuIn { from{opacity:0;transform:translateY(-10px) scale(.98)} to{opacity:1;transform:none} }
+.card,.produto-card,.solicitacoes-card,.painel-solicitacoes,.gerenciamento-card{animation:gcFadeUp .42s ease both;transition:transform .22s ease,box-shadow .22s ease}.card:hover,.produto-card:hover,.gerenciamento-card:hover{transform:translateY(-4px);box-shadow:0 14px 30px rgba(0,0,0,.12)}button,.btn{transition:transform .18s ease,filter .2s ease,box-shadow .2s ease}button:hover,.btn:hover{filter:brightness(1.05)}button:active,.btn:active{transform:scale(.97)}@media(max-width:700px){.mobile-menu.open,.mobile-nav.open,.nav-mobile.open,.menu-mobile.open,.mobile-menu.ativo,.mobile-nav.ativo,.nav-mobile.ativo,.menu-mobile.ativo{animation:gcMenuIn .22s ease both}}@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}}

@@ -16,3 +16,6 @@
 .manualOsGrid{display:grid;grid-template-columns:1.35fr .65fr 1.15fr 1fr;gap:12px;margin-top:16px}.manualAcoes{display:flex;align-items:center;justify-content:flex-end;gap:18px;margin-top:14px}.mostrarSenha{display:flex!important;align-items:center;gap:8px;font-size:12px!important;cursor:pointer}.mostrarSenha input{width:16px!important;height:16px!important;margin:0!important}.avisoSenha{font-size:11px;color:#8a9099;margin-top:10px;text-align:right}.osManual .btnPrimario{padding:0 22px}
 @media(max-width:900px){.manualOsGrid{grid-template-columns:1fr 1fr}}
 @media(max-width:600px){.manualOsGrid{grid-template-columns:1fr}.manualAcoes{align-items:stretch;flex-direction:column}.osManual .btnPrimario{width:100%}.avisoSenha{text-align:left}.toggleListaPecas{padding:17px}.conteudoListaPecas.aberto{padding:0 14px 16px}}
+
+/* Microinteracoes */
+@keyframes gcFadeUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}.card,.servico-card,.os-card,main section{animation:gcFadeUp .42s ease both}button,.btn{transition:transform .18s ease,filter .2s ease,box-shadow .2s ease}button:hover,.btn:hover{filter:brightness(1.05);transform:translateY(-1px)}button:active,.btn:active{transform:scale(.97)}@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}}

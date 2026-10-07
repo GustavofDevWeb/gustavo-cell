@@ -164,3 +164,184 @@ footer{margin-top:70px;background:#080b10;color:#aaa;text-align:center;padding:3
   .catalogoItensSimples .productCard:hover>p:nth-of-type(2){font-size:14px!important}
   .catalogoItensSimples .productCard:hover .productButton{min-height:50px;font-size:13px}
 }
+
+/* ===== RESPONSIVIDADE MOBILE - CABECALHO E ACOES ===== */
+@media(max-width:700px){
+  .topo{
+    display:grid;
+    grid-template-columns:minmax(0,1fr) auto;
+    gap:12px;
+    padding:12px 14px 14px;
+    min-height:auto;
+  }
+  .logo{min-width:0;gap:9px}
+  .logo img{width:48px;height:48px}
+  .logo h1{font-size:20px;overflow:hidden;text-overflow:ellipsis}
+  .acoesTopoLoja{grid-column:2;grid-row:1;margin:0!important;gap:7px}
+  #botaoCarrinho{width:44px;height:44px;padding:0;justify-content:center;position:relative}
+  #botaoCarrinho>span:nth-child(2){display:none}
+  #botaoCarrinho .iconeCarrinho{font-size:19px}
+  #contadorCarrinho{position:absolute;right:-5px;top:-6px;min-width:19px;padding:2px 5px;font-size:10px;box-shadow:0 2px 7px rgba(0,0,0,.25)}
+  .acoesTopoLoja .atalhoBackup{width:44px;height:44px;min-width:44px;min-height:44px;font-size:20px!important}
+  .menu{
+    grid-column:1/-1;
+    grid-row:2;
+    order:initial;
+    width:100%;
+    gap:4px;
+    justify-content:flex-start;
+    overflow-x:auto;
+    scrollbar-width:none;
+    padding:2px 0;
+  }
+  .menu::-webkit-scrollbar{display:none}
+  .menu a{flex:0 0 auto;font-size:13px;padding:9px 12px;border-radius:9px;background:rgba(255,255,255,.06)}
+  .menu a::after{display:none}
+  .menu a.ativo{background:rgba(39,211,225,.16);color:#fff}
+  .pesquisa{grid-column:1/-1;grid-row:3;order:initial;width:100%;margin:0}
+  #searchInput,#searchButton{height:44px}
+  .botaoAbrirFiltros{right:14px;top:auto;bottom:76px;height:42px;z-index:1250}
+  .botaoNecessitaAlgo{right:14px;bottom:18px;height:42px;max-width:calc(100vw - 28px)}
+  main{width:min(100% - 24px,1180px)}
+  .productCard{padding:12px}
+  .productCard img{height:170px}
+  .productButton{width:100%;padding:0 10px;font-size:12px;white-space:normal;line-height:1.2}
+}
+
+@media(max-width:380px){
+  .topo{padding-left:10px;padding-right:10px}
+  .logo h1{font-size:18px}
+  .logo img{width:44px;height:44px}
+  .menu a{font-size:12px;padding:8px 10px}
+  .botaoAbrirFiltros{right:10px}
+  .botaoNecessitaAlgo{right:10px;max-width:calc(100vw - 20px);font-size:11px}
+}
+
+/* ===== MENU HAMBURGUER MOBILE ===== */
+.menuMobileToggle{display:none}
+@media(max-width:700px){
+  .topo{display:grid;grid-template-columns:minmax(0,1fr) auto auto;align-items:center;gap:8px;padding:10px 12px;overflow:visible}
+  .logo{grid-column:1;grid-row:1;min-width:0}
+  .logo img{width:44px;height:44px}.logo h1{font-size:19px}
+  .acoesTopoLoja{grid-column:2;grid-row:1;display:flex!important}
+  .menuMobileToggle{grid-column:3;grid-row:1;display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;border:1px solid rgba(255,255,255,.2);border-radius:11px;background:rgba(255,255,255,.1);color:#fff;font-size:24px;font-weight:800;cursor:pointer;z-index:2}
+  .menuMobileToggle.aberto{background:#0066ff;border-color:#0066ff}
+  .menu{grid-column:1/-1;grid-row:2;display:none!important;width:100%;padding:8px;gap:5px;overflow:visible;background:rgba(4,10,20,.97);border:1px solid rgba(255,255,255,.1);border-radius:12px;box-shadow:0 14px 30px rgba(0,0,0,.28)}
+  .menu.menuMobileAberto{display:flex!important;flex-direction:column;align-items:stretch}
+  .menu a{width:100%;padding:11px 12px!important;border-radius:8px;background:transparent!important;font-size:14px!important}
+  .menu a:hover,.menu a.ativo{background:rgba(0,102,255,.2)!important}
+  .pesquisa{grid-column:1/-1;grid-row:3;width:100%!important;margin:0!important}
+  .acoesLojaTopo{display:flex;position:static!important;width:calc(100% - 24px);margin:12px auto 0;gap:8px;justify-content:flex-end}
+  .acoesLojaTopo .botaoNecessitaAlgo,.acoesLojaTopo .botaoAbrirFiltros,.botaoNecessitaAlgo,.botaoAbrirFiltros{position:static!important;inset:auto!important;transform:none!important;max-width:none}
+  .acoesLojaTopo .botaoNecessitaAlgo{flex:1;min-width:0}
+  .acoesLojaTopo .botaoAbrirFiltros{flex:0 0 auto}
+}
+@media(max-width:390px){
+  .topo{grid-template-columns:minmax(0,1fr) auto auto;padding:9px 9px}
+  .logo h1{font-size:17px}.logo img{width:40px;height:40px}
+  .menuMobileToggle,#botaoCarrinho,.acoesTopoLoja .atalhoBackup{width:40px!important;height:40px!important;min-width:40px!important;min-height:40px!important}
+  .acoesLojaTopo{width:calc(100% - 18px)}
+  .acoesLojaTopo .botaoNecessitaAlgo{font-size:11px;padding:0 9px}
+  .acoesLojaTopo .botaoAbrirFiltros{font-size:11px;padding:0 10px}
+}
+
+/* ===== Microinteracoes / animacoes ===== */
+@keyframes gcFadeUp { from { opacity:0; transform:translateY(16px); } to { opacity:1; transform:translateY(0); } }
+@keyframes gcMenuIn { from { opacity:0; transform:translateY(-10px) scale(.98); } to { opacity:1; transform:translateY(0) scale(1); } }
+@keyframes gcPulse { 0%,100% { transform:scale(1); } 50% { transform:scale(1.035); } }
+@keyframes gcShine { from { transform:translateX(-140%) skewX(-18deg); } to { transform:translateX(260%) skewX(-18deg); } }
+
+/* Entrada suave do conteudo e dos cards */
+.catalogo, #catalogo, .catalogo-container, .produtos-container { animation:gcFadeUp .48s ease both; }
+.card, .produto-card, .card-produto { animation:gcFadeUp .45s ease both; transition:transform .24s ease, box-shadow .24s ease, border-color .24s ease; }
+.card:hover, .produto-card:hover, .card-produto:hover { transform:translateY(-5px); box-shadow:0 16px 34px rgba(0,0,0,.13); }
+
+/* Botoes mais vivos */
+button, .btn, .add-carrinho, .necessita-btn, #necessitaAlgo, #btnNecessitaAlgo { transition:transform .18s ease, box-shadow .22s ease, filter .22s ease, background-color .22s ease; }
+button:active, .btn:active, .add-carrinho:active { transform:scale(.97); }
+.add-carrinho:hover, .necessita-btn:hover, #necessitaAlgo:hover, #btnNecessitaAlgo:hover { transform:translateY(-2px); filter:brightness(1.06); box-shadow:0 10px 24px rgba(30,77,255,.24); }
+
+/* Brilho discreto em acoes principais */
+.add-carrinho, .necessita-btn, #necessitaAlgo, #btnNecessitaAlgo { position:relative; overflow:hidden; }
+.add-carrinho::after, .necessita-btn::after, #necessitaAlgo::after, #btnNecessitaAlgo::after { content:""; position:absolute; inset:-40% auto -40% -35%; width:28%; background:linear-gradient(90deg,transparent,rgba(255,255,255,.30),transparent); transform:skewX(-18deg); pointer-events:none; }
+.add-carrinho:hover::after, .necessita-btn:hover::after, #necessitaAlgo:hover::after, #btnNecessitaAlgo:hover::after { animation:gcShine .65s ease; }
+
+/* Busca e filtros */
+input, select { transition:border-color .2s ease, box-shadow .2s ease, transform .2s ease; }
+input:focus, select:focus { box-shadow:0 0 0 4px rgba(13,99,255,.12); }
+
+/* Menu mobile */
+@media (max-width: 700px) {
+  .mobile-menu, .mobile-nav, .nav-mobile, .menu-mobile { transform-origin:top right; }
+  .mobile-menu.open, .mobile-nav.open, .nav-mobile.open, .menu-mobile.open,
+  .mobile-menu.ativo, .mobile-nav.ativo, .nav-mobile.ativo, .menu-mobile.ativo { animation:gcMenuIn .22s ease both; }
+  .menu-toggle, .hamburger, .mobile-menu-btn { transition:transform .22s ease, background-color .22s ease; }
+  .menu-toggle:active, .hamburger:active, .mobile-menu-btn:active { transform:scale(.92); }
+  .card, .produto-card, .card-produto { animation-duration:.38s; }
+}
+
+/* Respeita usuarios que desativam animacoes */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration:.01ms !important; animation-iteration-count:1 !important; transition-duration:.01ms !important; scroll-behavior:auto !important; }
+}
+
+
+/* ===== MOBILE V3: topo limpo, sem sobreposicoes ===== */
+.textoNecessitaMobile{display:none}
+@media(max-width:700px){
+  .topo{
+    grid-template-columns:minmax(130px,1fr) auto auto!important;
+    padding:9px 10px 10px!important;
+    gap:7px!important;
+  }
+  .logo{gap:7px!important;min-width:0!important}
+  .logo img{width:38px!important;height:38px!important;flex:0 0 38px}
+  .logo h1{font-size:16px!important;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .acoesTopoLoja{gap:6px!important}
+  #botaoCarrinho,.acoesTopoLoja .atalhoBackup,.menuMobileToggle{
+    width:38px!important;height:38px!important;min-width:38px!important;min-height:38px!important;
+    border-radius:10px!important;padding:0!important
+  }
+  .menuMobileToggle{font-size:21px!important}
+  .acoesTopoLoja .atalhoBackup{font-size:18px!important}
+  #botaoCarrinho .iconeCarrinho{font-size:17px!important}
+  .pesquisa{grid-column:1/-1!important;grid-row:3!important;margin-top:3px!important}
+  #searchInput,#searchButton{height:43px!important}
+
+  /* Esta barra fica NO fluxo da pagina, logo abaixo da pesquisa. */
+  .acoesLojaTopo{
+    display:grid!important;
+    grid-template-columns:minmax(0,1fr) auto;
+    position:relative!important;
+    inset:auto!important;
+    transform:none!important;
+    width:100%!important;
+    margin:0!important;
+    padding:10px 18px 12px!important;
+    gap:9px!important;
+    background:#f4f6f9;
+    z-index:20!important;
+  }
+  .acoesLojaTopo .botaoNecessitaAlgo,
+  .acoesLojaTopo .botaoAbrirFiltros{
+    position:relative!important;inset:auto!important;transform:none!important;
+    margin:0!important;height:42px!important;min-width:0!important;
+    border-radius:11px!important;white-space:nowrap!important;
+  }
+  .acoesLojaTopo .botaoNecessitaAlgo{width:100%!important;padding:0 14px!important;font-size:12px!important}
+  .acoesLojaTopo .botaoAbrirFiltros{width:auto!important;padding:0 15px!important;font-size:12px!important}
+  .textoNecessitaDesktop{display:none}
+  .textoNecessitaMobile{display:inline}
+
+  /* Banner vem depois da barra de acoes e nunca fica escondido por ela. */
+  .banner{position:relative!important;margin-top:0!important}
+}
+@media(max-width:380px){
+  .topo{grid-template-columns:minmax(110px,1fr) auto auto!important;padding-left:8px!important;padding-right:8px!important}
+  .logo h1{font-size:15px!important}
+  .logo img{width:35px!important;height:35px!important;flex-basis:35px}
+  #botaoCarrinho,.acoesTopoLoja .atalhoBackup,.menuMobileToggle{width:36px!important;height:36px!important;min-width:36px!important;min-height:36px!important}
+  .acoesLojaTopo{padding-left:12px!important;padding-right:12px!important}
+  .acoesLojaTopo .botaoNecessitaAlgo{font-size:11px!important;padding:0 10px!important}
+  .acoesLojaTopo .botaoAbrirFiltros{font-size:11px!important;padding:0 11px!important}
+}
